@@ -1,0 +1,118 @@
+// IPO 데이터 로드 및 표시
+(function() {
+    let allData = [];
+    let currentFilter = 'upcoming';
+
+    async function loadData() {
+        try {
+            const response = await fetch('data.json');
+            const data = await response.json();
+
+            // 마지막 업데이트 시간 표시
+            const lastUpdated = document.getElementById('last-updated');
+            if (data.last_updated) {
+                const date = new Date(data.last_updated);
+                lastUpdated.textContent = formatDate(date);
+            }
+
+            allData = data.items || [];
+            renderList();
+
+        } catch (error) {
+            console.error('데이터 로드 실패:', error);
+            document.getElementById('ipo-list').innerHTML =
+                '<p class="loading">데이터를 불러올 수 없습니다.</p>';
+        }
+    }
+
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
+    }
+
+    function formatDateRange(start, end) {
+        if (!start) return '-';
+
+        const startDate = new Date(start);
+        const startStr = `${startDate.getMonth() + 1}/${startDate.getDate()}`;
+
+        if (end && start !== end) {
+            const endDate = new Date(end);
+            const endStr = `${endDate.getMonth() + 1}/${endDate.getDate()}`;
+            return `${startStr} ~ ${endStr}`;
+        }
+        return startStr;
+    }
+
+    function isPast(dateStr) {
+        if (!dateStr) return false;
+        const date = new Date(dateStr);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return date < today;
+    }
+
+    function renderList() {
+        const container = document.getElementById('ipo-list');
+
+        let items = allData;
+        if (currentFilter === 'upcoming') {
+            items = allData.filter(item => !isPast(item.subscription_end || item.subscription_start));
+        }
+
+        if (items.length === 0) {
+            container.innerHTML = '<p class="loading">표시할 일정이 없습니다.</p>';
+            return;
+        }
+
+        // 날짜순 정렬 (가까운 날짜 먼저)
+        items.sort((a, b) => {
+            const dateA = new Date(a.subscription_start || '9999-12-31');
+            const dateB = new Date(b.subscription_start || '9999-12-31');
+            return dateA - dateB;
+        });
+
+        container.innerHTML = items.map(item => {
+            const past = isPast(item.subscription_end || item.subscription_start);
+            return `
+                <div class="ipo-item${past ? ' past' : ''}">
+                    <span class="ipo-badge subscription">청약</span>
+                    <div class="ipo-info">
+                        <div class="ipo-name">${escapeHtml(item.company_name)}</div>
+                        <div class="ipo-details">
+                            ${item.offer_price_range || '-'}
+                            ${item.lead_underwriter ? '| ' + escapeHtml(item.lead_underwriter) : ''}
+                        </div>
+                    </div>
+                    <div class="ipo-date">
+                        ${formatDateRange(item.subscription_start, item.subscription_end)}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // 필터 버튼 이벤트
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            renderList();
+        });
+    });
+
+    // 초기 로드
+    loadData();
+})();
