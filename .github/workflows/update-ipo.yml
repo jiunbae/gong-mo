@@ -1,0 +1,92 @@
+name: Update IPO Data
+
+on:
+  # 매일 오전 7시 (KST) 실행
+  schedule:
+    - cron: '0 22 * * *'  # 07:00 KST (22:00 UTC 전날)
+
+  # 수동 실행
+  workflow_dispatch:
+    inputs:
+      sync_calendar:
+        description: 'Sync to Google Calendar'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main repo
+        uses: actions/checkout@v4
+        with:
+          path: gong-mo
+
+      - name: Checkout pages repo
+        uses: actions/checkout@v4
+        with:
+          repository: jiunbae/gong-mo-calendar
+          path: gong-mo-calendar
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          cd gong-mo
+          pip install -r requirements.txt
+
+      - name: Collect IPO data
+        run: |
+          cd gong-mo
+          PYTHONPATH=src python -c "
+          from gongmo.collectors.site38 import Site38Collector
+          from gongmo.publisher.static import StaticSiteGenerator
+          from pathlib import Path
+          import json
+
+          # 수집
+          collector = Site38Collector()
+          ipos = collector.collect()
+          print(f'수집 완료: {len(ipos)}건')
+
+          # 정적 데이터 생성 (gong-mo-calendar 폴더에)
+          output_dir = Path('../gong-mo-calendar')
+          generator = StaticSiteGenerator(output_dir)
+          generator.generate(ipos)
+          print(f'데이터 생성 완료: {output_dir}/data.json')
+          "
+
+      - name: Commit and push to pages repo
+        run: |
+          cd gong-mo-calendar
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Update IPO data - $(date +'%Y-%m-%d %H:%M')"
+            git push
+            echo "Changes pushed successfully"
+          else
+            echo "No changes to commit"
+          fi
+
+      # Google Calendar 동기화 (수동 실행 시 옵션으로)
+      - name: Sync to Google Calendar
+        if: ${{ github.event.inputs.sync_calendar == 'true' }}
+        env:
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+          GOOGLE_TOKEN: ${{ secrets.GOOGLE_TOKEN }}
+        run: |
+          cd gong-mo
+          # 토큰 파일 생성
+          echo "$GOOGLE_TOKEN" > token.json
+          PYTHONPATH=src python -m gongmo.main
+          rm -f token.json
