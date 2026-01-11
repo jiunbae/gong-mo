@@ -19,17 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main repo
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          path: gong-mo
-
-      - name: Checkout pages repo
-        uses: actions/checkout@v4
-        with:
-          repository: jiunbae/gong-mo-calendar
-          path: gong-mo-calendar
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -38,39 +29,31 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: |
-          cd gong-mo
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Collect IPO data
         run: |
-          cd gong-mo
           PYTHONPATH=src python -c "
           from gongmo.collectors.site38 import Site38Collector
           from gongmo.publisher.static import StaticSiteGenerator
           from pathlib import Path
-          import json
 
-          # 수집
           collector = Site38Collector()
           ipos = collector.collect()
           print(f'수집 완료: {len(ipos)}건')
 
-          # 정적 데이터 생성 (gong-mo-calendar 폴더에)
-          output_dir = Path('../gong-mo-calendar')
-          generator = StaticSiteGenerator(output_dir)
+          generator = StaticSiteGenerator(Path('docs'))
           generator.generate(ipos)
-          print(f'데이터 생성 완료: {output_dir}/data.json')
+          print('데이터 생성 완료: docs/data.json')
           "
 
-      - name: Commit and push to pages repo
+      - name: Commit and push
         run: |
-          cd gong-mo-calendar
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           if [ -n "$(git status --porcelain)" ]; then
-            git add .
+            git add docs/data.json
             git commit -m "Update IPO data - $(date +'%Y-%m-%d %H:%M')"
             git push
             echo "Changes pushed successfully"
@@ -85,8 +68,6 @@ jobs:
           GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
           GOOGLE_TOKEN: ${{ secrets.GOOGLE_TOKEN }}
         run: |
-          cd gong-mo
-          # 토큰 파일 생성
           echo "$GOOGLE_TOKEN" > token.json
           PYTHONPATH=src python -m gongmo.main
           rm -f token.json
