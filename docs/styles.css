@@ -66,6 +66,13 @@ header .subtitle {
     transform: translateY(-1px);
 }
 
+.ad-banner {
+    min-height: 90px;
+    background: #f0f0f0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .calendar-section {
     background: var(--card-bg);
     border-radius: 12px;
