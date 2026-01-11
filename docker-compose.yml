@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  gongmo-bot:
+    build: .
+    container_name: gongmo-calendar-bot
+    environment:
+      - GOOGLE_CALENDAR_ID=${GOOGLE_CALENDAR_ID:-primary}
+    volumes:
+      # 인증 토큰 유지
+      - ./credentials.json:/app/credentials.json:ro
+      - ./token.json:/app/token.json
+      # docs 폴더 마운트 (정적 사이트 업데이트용)
+      - ./docs:/app/docs
+    command: ["python", "-m", "gongmo.main", "--publish"]
+
+  # 캘린더 동기화만 실행 (정적 사이트 업데이트 없이)
+  gongmo-sync:
+    build: .
+    container_name: gongmo-calendar-sync
+    environment:
+      - GOOGLE_CALENDAR_ID=${GOOGLE_CALENDAR_ID:-primary}
+    volumes:
+      - ./credentials.json:/app/credentials.json:ro
+      - ./token.json:/app/token.json
+    command: ["python", "-m", "gongmo.main"]
+    profiles:
+      - sync
+
+  # Dry run (테스트용)
+  gongmo-dry:
+    build: .
+    container_name: gongmo-calendar-dry
+    command: ["python", "-m", "gongmo.main", "--dry-run"]
+    profiles:
+      - test

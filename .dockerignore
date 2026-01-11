@@ -1,0 +1,32 @@
+# Git
+.git
+.gitignore
+docs/.git
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+.venv
+venv
+.pytest_cache
+
+# IDE
+.vscode
+.idea
+
+# Secrets
+.env
+credentials.json
+token.json
+
+# Data
+data/
+*.db
+
+# Tests
+tests/
+
+# Documentation
+*.md
+LICENSE
