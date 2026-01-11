@@ -8,6 +8,7 @@
     --border-color: #dadce0;
     --subscription-color: #ea4335;
     --listing-color: #34a853;
+    --ad-banner-bg: #f0f0f0;
 }
 
 * {
@@ -68,7 +69,7 @@ header .subtitle {
 
 .ad-banner {
     min-height: 90px;
-    background: #f0f0f0;
+    background: var(--ad-banner-bg);
     margin-bottom: 20px;
     text-align: center;
 }
