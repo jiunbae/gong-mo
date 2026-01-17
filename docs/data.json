@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-01-11T09:19:38.152004",
+  "last_updated": "2026-01-17T18:25:15.492973",
   "total_count": 30,
   "items": [
     {
@@ -18,8 +18,8 @@
     },
     {
       "company_name": "액스비스",
-      "subscription_start": "2026-02-05",
-      "subscription_end": "2026-02-06",
+      "subscription_start": "2026-02-23",
+      "subscription_end": "2026-02-24",
       "listing_date": null,
       "offer_price_range": "10,100~11,500원",
       "final_offer_price": null,
@@ -29,6 +29,20 @@
       "institutional_competition": null,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2268&l=&page=1"
+    },
+    {
+      "company_name": "케이뱅크(유가)",
+      "subscription_start": "2026-02-20",
+      "subscription_end": "2026-02-23",
+      "listing_date": null,
+      "offer_price_range": "8,300~9,500원",
+      "final_offer_price": null,
+      "offer_price_min": 8300,
+      "offer_price_max": 9500,
+      "lead_underwriter": "NH투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2271&l=&page=1"
     },
     {
       "company_name": "카나프테라퓨틱스",
@@ -68,7 +82,7 @@
       "offer_price_min": 2000,
       "offer_price_max": 2000,
       "lead_underwriter": "삼성증권",
-      "institutional_competition": null,
+      "institutional_competition": 1870.38,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2266&l=&page=1"
     },
@@ -407,20 +421,6 @@
       "institutional_competition": 2865.17,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2233&l=&page=1"
-    },
-    {
-      "company_name": "미래에셋비전스팩8호",
-      "subscription_start": "2025-11-17",
-      "subscription_end": "2025-11-18",
-      "listing_date": null,
-      "offer_price_range": "2,000원",
-      "final_offer_price": 2000,
-      "offer_price_min": 2000,
-      "offer_price_max": 2000,
-      "lead_underwriter": "미래에셋증권",
-      "institutional_competition": 166.54,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2251&l=&page=1"
     }
   ]
 }
