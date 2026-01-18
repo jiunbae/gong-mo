@@ -33,8 +33,8 @@
         const today = new Date();
         const targetMonths = [];
         
-        // 지난 1개월 (-1) ~ 현재 (0) ~ 앞으로 3개월 (+1, +2, +3)
-        for (let i = -1; i <= 3; i++) {
+        // 지난 1개월 (-1) ~ 현재 (0) ~ 앞으로 2개월 (+1, +2)
+        for (let i = -1; i <= 2; i++) {
             const d = new Date(today.getFullYear(), today.getMonth() + i, 1);
             const year = d.getFullYear();
             const month = d.getMonth() + 1;
