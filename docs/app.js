@@ -28,31 +28,36 @@
 
     function createMonthFilters() {
         const controls = document.getElementById('filter-controls');
-        const months = new Set();
         
-        allData.forEach(item => {
-            if (item.subscription_start) {
-                const date = new Date(item.subscription_start);
-                months.add(`${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`);
-            }
-        });
+        // 현재 날짜 기준 범위 계산
+        const today = new Date();
+        const targetMonths = [];
+        
+        // 지난 1개월 (-1) ~ 현재 (0) ~ 앞으로 3개월 (+1, +2, +3)
+        for (let i = -1; i <= 3; i++) {
+            const d = new Date(today.getFullYear(), today.getMonth() + i, 1);
+            const year = d.getFullYear();
+            const month = d.getMonth() + 1;
+            const monthStr = `${year}-${String(month).padStart(2, '0')}`;
+            targetMonths.push({
+                key: monthStr,
+                label: `${year}년 ${month}월`
+            });
+        }
 
-        const sortedMonths = Array.from(months).sort().reverse();
-        
-        // 기존 버튼 유지하면서 월별 버튼 추가
-        sortedMonths.forEach(month => {
-            const [year, m] = month.split('-');
+        // 월별 버튼 추가
+        targetMonths.forEach(mInfo => {
             const btn = document.createElement('button');
             btn.className = 'filter-btn';
-            btn.dataset.filter = month;
-            btn.textContent = `${year}년 ${parseInt(m)}월`;
+            btn.dataset.filter = mInfo.key;
+            btn.textContent = mInfo.label;
             btn.addEventListener('click', () => {
-                updateFilter(btn, month);
+                updateFilter(btn, mInfo.key);
             });
             controls.appendChild(btn);
         });
 
-        // 기존 예정/전체 버튼에도 이벤트 리스너 재등록
+        // 기존 예정/전체 버튼에 이벤트 리스너 재등록
         document.querySelectorAll('.filter-btn').forEach(btn => {
             if (btn.dataset.filter === 'upcoming' || btn.dataset.filter === 'all') {
                 btn.addEventListener('click', () => {
@@ -107,7 +112,6 @@
         if (currentFilter === 'upcoming') {
             items = allData.filter(item => !isPast(item.subscription_end || item.subscription_start));
         } else if (currentFilter !== 'all') {
-            // 월별 필터 (YYYY-MM 형식)
             items = allData.filter(item => {
                 if (!item.subscription_start) return false;
                 return item.subscription_start.startsWith(currentFilter);
@@ -119,7 +123,6 @@
             return;
         }
 
-        // 날짜순 정렬
         items.sort((a, b) => {
             const dateA = new Date(a.subscription_start || '9999-12-31');
             const dateB = new Date(b.subscription_start || '9999-12-31');
@@ -153,6 +156,5 @@
         return div.innerHTML;
     }
 
-    // 초기 로드
     loadData();
 })();
