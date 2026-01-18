@@ -68,7 +68,7 @@ header .subtitle {
 }
 
 .ad-banner {
-    min-height: 280px;
+    min-height: 100px;
     background: var(--ad-banner-bg);
     margin-bottom: 20px;
     text-align: center;
@@ -253,7 +253,7 @@ footer a:hover {
 }
 
 .ad-banner-bottom {
-    min-height: 280px;
+    min-height: 100px;
     background: var(--ad-banner-bg);
     margin-top: 20px;
     margin-bottom: 20px;
