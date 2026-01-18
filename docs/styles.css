@@ -68,7 +68,7 @@ header .subtitle {
 }
 
 .ad-banner {
-    min-height: 90px;
+    min-height: 280px;
     background: var(--ad-banner-bg);
     margin-bottom: 20px;
     text-align: center;
