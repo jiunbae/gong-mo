@@ -251,3 +251,11 @@ footer a:hover {
         margin-top: 8px;
     }
 }
+
+.ad-banner-bottom {
+    min-height: 280px;
+    background: var(--ad-banner-bg);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
