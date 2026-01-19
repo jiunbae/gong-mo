@@ -94,6 +94,12 @@ header .subtitle {
     align-items: center;
 }
 
+.disclaimer-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 12px;
+}
+
 .ad-banner {
     min-height: 100px;
     background: var(--ad-banner-bg);
