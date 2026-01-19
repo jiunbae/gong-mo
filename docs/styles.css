@@ -67,6 +67,33 @@ header .subtitle {
     transform: translateY(-1px);
 }
 
+.source-link-btn {
+    display: inline-block;
+    background-color: white;
+    color: var(--text-secondary);
+    padding: 12px 24px;
+    border-radius: 24px;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s;
+}
+
+.source-link-btn:hover {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+    transform: translateY(-1px);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
 .ad-banner {
     min-height: 100px;
     background: var(--ad-banner-bg);
