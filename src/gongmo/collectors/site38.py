@@ -77,10 +77,14 @@ class Site38Collector(BaseCollector):
             html_nw = self._fetch_page(url_nw)
             new_results = self._parse_ipo_list(html_nw, is_listing=True)
 
-            # 중복 제거 후 추가
-            existing_names = {r.company_name for r in results}
+            # 기존 데이터와 병합 (회사명 기준)
+            results_dict = {r.company_name: r for r in results}
             for ipo in new_results:
-                if ipo.company_name not in existing_names:
+                if ipo.company_name in results_dict:
+                    # 상장일 정보 업데이트
+                    if ipo.listing_date:
+                        results_dict[ipo.company_name].listing_date = ipo.listing_date
+                else:
                     results.append(ipo)
 
             # 유효한 데이터만 필터링 (청약일이 있는 것만)
@@ -98,8 +102,17 @@ class Site38Collector(BaseCollector):
         """유효한 IPO 데이터만 필터링"""
         # 제외할 키워드
         invalid_keywords = [
-            "실시간", "인기주", "빨간색", "매매", "비상장", "공모주일정",
-            "IPO 청구", "IPO 승인", "청약일정", "신규상장", "최근 IPO"
+            "실시간",
+            "인기주",
+            "빨간색",
+            "매매",
+            "비상장",
+            "공모주일정",
+            "IPO 청구",
+            "IPO 승인",
+            "청약일정",
+            "신규상장",
+            "최근 IPO",
         ]
 
         valid_ipos = []
@@ -130,13 +143,19 @@ class Site38Collector(BaseCollector):
         soup = BeautifulSoup(html, "lxml")
 
         # 테이블 찾기 (메인 데이터 테이블)
-        tables = soup.find_all("table")
+        tables = soup.find_all(
+            "table", summary="공모주 소식" if not is_listing else "신규상장종목"
+        )
+        if not tables:
+            tables = soup.find_all("table")
 
         for table in tables:
             rows = table.find_all("tr")
             for row in rows:
                 cols = row.find_all("td")
-                if len(cols) < 5:
+                # 신규상장 페이지는 컬럼 수가 다를 수 있음
+                min_cols = 5 if not is_listing else 7
+                if len(cols) < min_cols:
                     continue
 
                 try:
@@ -152,49 +171,73 @@ class Site38Collector(BaseCollector):
     def _parse_row(self, cols: list, is_listing: bool = False) -> Optional[IPOSchedule]:
         """테이블 행에서 공모주 정보 추출"""
         try:
-            # 컬럼 구조:
-            # [0] 회사명 (링크)
-            # [1] 청약기간 or 상장일
-            # [2] 확정공모가
-            # [3] 공모가 범위
-            # [4] 경쟁률
-            # [5] 주관사
-
-            # 회사명 추출
-            company_name = self._extract_company_name(cols[0])
-            if not company_name:
-                return None
-
-            # 링크 추출
-            detail_url = self._extract_detail_url(cols[0])
-
-            # 날짜 정보 추출
-            date_text = cols[1].get_text(strip=True)
-
             if is_listing:
-                # 상장 일정 페이지
-                listing_date = self._parse_single_date(date_text)
+                # 신규상장 페이지 컬럼 구조:
+                # [0] 기업명
+                # [1] 상장일
+                # [2] 현재가(원)
+                # [3] 전일대비(%)
+                # [4] 공모가(원)
+                # [5] 공모가대비 등락률(%)
+                # [6] 시초가(원)
+                # [7] 시초가대비 등락률(%)
+                # [8] 첫날종가(원)
+                company_name = self._extract_company_name(cols[0])
+                if not company_name:
+                    return None
+
+                listing_date_text = cols[1].get_text(strip=True)
+                listing_date = self._parse_single_date(
+                    listing_date_text.replace("/", ".")
+                )
+
                 subscription_start = None
                 subscription_end = None
+
+                final_offer_price = self._parse_price(cols[4].get_text(strip=True))
+                offer_price_min = None
+                offer_price_max = None
+                competition = None
+                lead_underwriter = None
+                detail_url = self._extract_detail_url(cols[0])
             else:
                 # 청약 일정 페이지
+                # [0] 회사명 (링크)
+                # [1] 청약기간
+                # [2] 확정공모가
+                # [3] 공모가 범위
+                # [4] 경쟁률
+                # [5] 주관사
+
+                # 회사명 추출
+                company_name = self._extract_company_name(cols[0])
+                if not company_name:
+                    return None
+
+                # 링크 추출
+                detail_url = self._extract_detail_url(cols[0])
+
+                # 날짜 정보 추출
+                date_text = cols[1].get_text(strip=True)
                 subscription_start, subscription_end = self._parse_date_range(date_text)
                 listing_date = None
 
-            # 공모가 정보
-            final_price_text = cols[2].get_text(strip=True) if len(cols) > 2 else ""
-            price_range_text = cols[3].get_text(strip=True) if len(cols) > 3 else ""
+                # 공모가 정보
+                final_price_text = cols[2].get_text(strip=True) if len(cols) > 2 else ""
+                price_range_text = cols[3].get_text(strip=True) if len(cols) > 3 else ""
 
-            final_offer_price = self._parse_price(final_price_text)
-            offer_price_min, offer_price_max = self._parse_price_range(price_range_text)
+                final_offer_price = self._parse_price(final_price_text)
+                offer_price_min, offer_price_max = self._parse_price_range(
+                    price_range_text
+                )
 
-            # 경쟁률
-            competition_text = cols[4].get_text(strip=True) if len(cols) > 4 else ""
-            competition = self._parse_competition(competition_text)
+                # 경쟁률
+                competition_text = cols[4].get_text(strip=True) if len(cols) > 4 else ""
+                competition = self._parse_competition(competition_text)
 
-            # 주관사
-            underwriter_text = cols[5].get_text(strip=True) if len(cols) > 5 else ""
-            lead_underwriter = self._clean_underwriter(underwriter_text)
+                # 주관사
+                underwriter_text = cols[5].get_text(strip=True) if len(cols) > 5 else ""
+                lead_underwriter = self._clean_underwriter(underwriter_text)
 
             return IPOSchedule(
                 company_name=company_name,
@@ -274,8 +317,12 @@ class Site38Collector(BaseCollector):
         match2 = re.search(pattern2, text)
         if match2:
             try:
-                start = date(int(match2.group(1)), int(match2.group(2)), int(match2.group(3)))
-                end = date(int(match2.group(4)), int(match2.group(5)), int(match2.group(6)))
+                start = date(
+                    int(match2.group(1)), int(match2.group(2)), int(match2.group(3))
+                )
+                end = date(
+                    int(match2.group(4)), int(match2.group(5)), int(match2.group(6))
+                )
                 return start, end
             except ValueError:
                 return None, None
@@ -285,7 +332,9 @@ class Site38Collector(BaseCollector):
         match3 = re.search(pattern3, text)
         if match3:
             try:
-                single_date = date(int(match3.group(1)), int(match3.group(2)), int(match3.group(3)))
+                single_date = date(
+                    int(match3.group(1)), int(match3.group(2)), int(match3.group(3))
+                )
                 return single_date, single_date
             except ValueError:
                 return None, None
@@ -301,7 +350,9 @@ class Site38Collector(BaseCollector):
         match = re.search(pattern, text)
         if match:
             try:
-                return date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
+                return date(
+                    int(match.group(1)), int(match.group(2)), int(match.group(3))
+                )
             except ValueError:
                 return None
         return None
