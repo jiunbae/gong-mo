@@ -73,11 +73,35 @@ class GoogleCalendarAuth:
                 flow = InstalledAppFlow.from_client_secrets_file(
                     str(self.credentials_path), SCOPES
                 )
+                creds = flow.run_local_server(
+                    port=0,
+                    prompt="consent",
+                    success_message="인증 성공! 이 창을 닫아도 됩니다.",
+                    open_browser=False,
+                )
+
                 # 로컬 서버를 통한 인증 (브라우저 팝업)
                 creds = flow.run_local_server(
                     port=0,
                     prompt="consent",
                     success_message="인증 성공! 이 창을 닫아도 됩니다.",
+                    open_browser=False,
+                )
+
+                # 로컬 서버를 통한 인증 (브라우저를 열지 않고 URL만 출력)
+                creds = flow.run_local_server(
+                    port=0,
+                    prompt="consent",
+                    success_message="인증 성공! 이 창을 닫아도 됩니다.",
+                    open_browser=False,
+                )
+
+                # 로컬 서버를 통한 인증 (브라우저 열지 않음)
+                creds = flow.run_local_server(
+                    port=0,
+                    prompt="consent",
+                    success_message="인증 성공! 이 창을 닫아도 됩니다.",
+                    open_browser=False,
                 )
                 logger.info("새 인증 완료")
 
@@ -121,9 +145,7 @@ class GoogleCalendarAuth:
             return False
 
         try:
-            creds = Credentials.from_authorized_user_file(
-                str(self.token_path), SCOPES
-            )
+            creds = Credentials.from_authorized_user_file(str(self.token_path), SCOPES)
             return creds.valid or (creds.expired and creds.refresh_token)
         except Exception:
             return False
