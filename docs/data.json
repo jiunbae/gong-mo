@@ -1,7 +1,35 @@
 {
-  "last_updated": "2026-01-17T18:25:15.492973",
+  "last_updated": "2026-01-21T15:32:32.892435",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "아이엠바이오로직스",
+      "subscription_start": "2026-03-11",
+      "subscription_end": "2026-03-12",
+      "listing_date": null,
+      "offer_price_range": "19,000~26,000원",
+      "final_offer_price": null,
+      "offer_price_min": 19000,
+      "offer_price_max": 26000,
+      "lead_underwriter": "한국투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2272&l=&page=1"
+    },
+    {
+      "company_name": "메쥬",
+      "subscription_start": "2026-03-05",
+      "subscription_end": "2026-03-06",
+      "listing_date": null,
+      "offer_price_range": "16,700~21,600원",
+      "final_offer_price": null,
+      "offer_price_min": 16700,
+      "offer_price_max": 21600,
+      "lead_underwriter": "22",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2274&l=&page=1"
+    },
     {
       "company_name": "리센스메디컬",
       "subscription_start": "2026-03-04",
@@ -31,6 +59,20 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2268&l=&page=1"
     },
     {
+      "company_name": "에스팀",
+      "subscription_start": "2026-02-23",
+      "subscription_end": "2026-02-24",
+      "listing_date": null,
+      "offer_price_range": "7,000~8,500원",
+      "final_offer_price": null,
+      "offer_price_min": 7000,
+      "offer_price_max": 8500,
+      "lead_underwriter": "한국투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2273&l=&page=1"
+    },
+    {
       "company_name": "케이뱅크(유가)",
       "subscription_start": "2026-02-20",
       "subscription_end": "2026-02-23",
@@ -46,8 +88,8 @@
     },
     {
       "company_name": "카나프테라퓨틱스",
-      "subscription_start": "2026-01-29",
-      "subscription_end": "2026-01-30",
+      "subscription_start": "2026-02-19",
+      "subscription_end": "2026-02-20",
       "listing_date": null,
       "offer_price_range": "16,000~20,000원",
       "final_offer_price": null,
@@ -63,8 +105,8 @@
       "subscription_start": "2026-01-20",
       "subscription_end": "2026-01-21",
       "listing_date": null,
-      "offer_price_range": "8,500~10,000원",
-      "final_offer_price": null,
+      "offer_price_range": "10,000원",
+      "final_offer_price": 10000,
       "offer_price_min": 8500,
       "offer_price_max": 10000,
       "lead_underwriter": "NH투자증권",
@@ -379,48 +421,6 @@
       "institutional_competition": 42.75,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2239&l=&page=1"
-    },
-    {
-      "company_name": "삼성스팩12호",
-      "subscription_start": "2025-11-19",
-      "subscription_end": "2025-11-20",
-      "listing_date": null,
-      "offer_price_range": "2,000원",
-      "final_offer_price": 2000,
-      "offer_price_min": 2000,
-      "offer_price_max": 2000,
-      "lead_underwriter": "삼성증권",
-      "institutional_competition": 120.36,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2253&l=&page=1"
-    },
-    {
-      "company_name": "미래에셋비전스팩9호",
-      "subscription_start": "2025-11-19",
-      "subscription_end": "2025-11-20",
-      "listing_date": null,
-      "offer_price_range": "2,000원",
-      "final_offer_price": 2000,
-      "offer_price_min": 2000,
-      "offer_price_max": 2000,
-      "lead_underwriter": "미래에셋증권",
-      "institutional_competition": 203.0,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2254&l=&page=1"
-    },
-    {
-      "company_name": "아로마티카",
-      "subscription_start": "2025-11-18",
-      "subscription_end": "2025-11-19",
-      "listing_date": null,
-      "offer_price_range": "8,000원",
-      "final_offer_price": 8000,
-      "offer_price_min": 6000,
-      "offer_price_max": 8000,
-      "lead_underwriter": "신한투자증권",
-      "institutional_competition": 2865.17,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2233&l=&page=1"
     }
   ]
 }

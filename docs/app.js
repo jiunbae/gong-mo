@@ -97,6 +97,12 @@
         return startStr;
     }
 
+    function formatDateSimple(dateStr) {
+        if (!dateStr) return '';
+        const date = new Date(dateStr);
+        return `${date.getMonth() + 1}/${date.getDate()}`;
+    }
+
     function isPast(dateStr) {
         if (!dateStr) return false;
         const date = new Date(dateStr);
@@ -131,9 +137,20 @@
 
         container.innerHTML = items.map(item => {
             const past = isPast(item.subscription_end || item.subscription_start);
+            const listPast = isPast(item.listing_date);
+            
+            let listingHtml = '';
+            if (item.listing_date) {
+                listingHtml = `
+                    <div class="date-row${listPast ? ' past' : ''}">
+                        <span class="date-label list">상장</span>
+                        <span class="date-text">${formatDateSimple(item.listing_date)}</span>
+                    </div>
+                `;
+            }
+
             return `
                 <div class="ipo-item${past ? ' past' : ''}">
-                    <span class="ipo-badge subscription">청약</span>
                     <div class="ipo-info">
                         <div class="ipo-name">${escapeHtml(item.company_name)}</div>
                         <div class="ipo-details">
@@ -142,7 +159,11 @@
                         </div>
                     </div>
                     <div class="ipo-date">
-                        ${formatDateRange(item.subscription_start, item.subscription_end)}
+                        <div class="date-row">
+                            <span class="date-label sub">청약</span>
+                            <span class="date-text">${formatDateRange(item.subscription_start, item.subscription_end)}</span>
+                        </div>
+                        ${listingHtml}
                     </div>
                 </div>
             `;
