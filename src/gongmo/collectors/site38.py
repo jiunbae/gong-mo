@@ -69,6 +69,9 @@ class Site38Collector(BaseCollector):
             html = self._fetch_page(url)
             results.extend(self._parse_ipo_list(html))
 
+            # 중복 제거 (회사명 + 청약일 기준)
+            results = self._filter_valid_ipos(results)
+
             time.sleep(settings.request_delay)  # 서버 부하 방지
 
             # 최근 청약 완료 목록도 수집 (o=nw: 신규 상장)
@@ -270,7 +273,8 @@ class Site38Collector(BaseCollector):
         if not text or text in ["종목명", "기업명", "회사명"]:
             return None
 
-        # 특수문자 정리
+        # (유가), (코넥스), (스팩) 등 태그 제거 및 공백 정리
+        text = re.sub(r"\(.*?\)", "", text)
         text = re.sub(r"\s+", " ", text).strip()
         return text if text else None
 
