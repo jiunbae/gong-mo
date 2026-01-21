@@ -142,7 +142,9 @@ class IPOCalendarBot:
 
         logger.info(f"\n다가오는 공모주 일정 ({len(events)}건):")
         for event in events:
-            start = event.get("start", {}).get("date", event.get("start", {}).get("dateTime", ""))
+            start = event.get("start", {}).get(
+                "date", event.get("start", {}).get("dateTime", "")
+            )
             summary = event.get("summary", "Unknown")
             logger.info(f"  - [{start}] {summary}")
 
@@ -207,7 +209,9 @@ class IPOCalendarBot:
             logger.info("정적 사이트 업데이트 완료!")
             logger.info(f"  - 수집: {stats['collected']}건")
             logger.info(f"  - 데이터 생성: {'성공' if stats['published'] else '실패'}")
-            logger.info(f"  - GitHub 푸시: {'성공' if stats['pushed'] else '스킵/실패'}")
+            logger.info(
+                f"  - GitHub 푸시: {'성공' if stats['pushed'] else '스킵/실패'}"
+            )
             logger.info("=" * 50)
 
         except Exception as e:
@@ -249,7 +253,8 @@ def main():
         help="Google Calendar 인증 상태 확인",
     )
     parser.add_argument(
-        "--verbose", "-v",
+        "--verbose",
+        "-v",
         action="store_true",
         help="상세 로그 출력",
     )
