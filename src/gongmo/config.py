@@ -21,7 +21,7 @@ class Settings(BaseSettings):
     """애플리케이션 설정"""
 
     # Google Calendar
-    google_calendar_id: str = "primary"
+    google_calendar_id: str = "REDACTED_CALENDAR_ID@group.calendar.google.com"
 
     # Open DART API (선택사항)
     dart_api_key: str = ""
