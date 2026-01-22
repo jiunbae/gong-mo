@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-01-21T21:33:59.074719",
+  "last_updated": "2026-01-22T04:29:14.523172",
   "total_count": 30,
   "items": [
     {
@@ -110,7 +110,7 @@
       "offer_price_min": 8500,
       "offer_price_max": 10000,
       "lead_underwriter": "NH투자증권",
-      "institutional_competition": null,
+      "institutional_competition": 1354.4,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2267&l=&page=1"
     },
