@@ -69,36 +69,12 @@ class GoogleCalendarAuth:
                         "설정 방법: https://developers.google.com/calendar/api/quickstart/python"
                     )
 
-                logger.info("새로운 인증 시작 (브라우저가 열립니다)...")
+                logger.info("새로운 인증 시작...")
                 flow = InstalledAppFlow.from_client_secrets_file(
                     str(self.credentials_path), SCOPES
                 )
                 creds = flow.run_local_server(
-                    port=0,
-                    prompt="consent",
-                    success_message="인증 성공! 이 창을 닫아도 됩니다.",
-                    open_browser=False,
-                )
-
-                # 로컬 서버를 통한 인증 (브라우저 팝업)
-                creds = flow.run_local_server(
-                    port=0,
-                    prompt="consent",
-                    success_message="인증 성공! 이 창을 닫아도 됩니다.",
-                    open_browser=False,
-                )
-
-                # 로컬 서버를 통한 인증 (브라우저를 열지 않고 URL만 출력)
-                creds = flow.run_local_server(
-                    port=0,
-                    prompt="consent",
-                    success_message="인증 성공! 이 창을 닫아도 됩니다.",
-                    open_browser=False,
-                )
-
-                # 로컬 서버를 통한 인증 (브라우저 열지 않음)
-                creds = flow.run_local_server(
-                    port=0,
+                    port=54321,
                     prompt="consent",
                     success_message="인증 성공! 이 창을 닫아도 됩니다.",
                     open_browser=False,
