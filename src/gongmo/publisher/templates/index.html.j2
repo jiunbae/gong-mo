@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site_url }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:image" content="{{ og_image_url }}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ site_url }}">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="{{ og_image_url }}">
+
     <meta name="description" content="{{ description }}">
     <meta name="keywords" content="공모주, IPO, 청약, 주식, 캘린더, 일정">
     <link rel="canonical" href="{{ site_url }}">
-    <meta property="og:title" content="{{ title }}">
-    <meta property="og:description" content="{{ description }}">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ site_url }}">
-    <meta property="og:locale" content="ko_KR">
-    <meta property="og:image" content="{{ og_image_url }}">
     
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0066cc">
     <link rel="apple-touch-icon" href="icon-192.png">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ title }}">
-    <meta name="twitter:description" content="{{ description }}">
-    <meta name="twitter:image" content="{{ og_image_url }}">
 
     <script type="application/ld+json">
         {{ structured_data | safe }}
