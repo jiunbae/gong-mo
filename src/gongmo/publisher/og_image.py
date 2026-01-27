@@ -126,5 +126,3 @@ class OGImageGenerator:
             except (IOError, OSError):
                 pass
         return ImageFont.load_default()
-
-        return ImageFont.load_default()
