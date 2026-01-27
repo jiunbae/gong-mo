@@ -72,11 +72,7 @@ class OGImageGenerator:
 
             # 주요 일정 리스트 (최대 N개)
             y_offset = 260
-            display_ipos = (
-                upcoming_ipos[: settings.max_display_ipos]
-                if upcoming_ipos
-                else ipos[: settings.max_display_ipos]
-            )
+            display_ipos = (upcoming_ipos or ipos)[: settings.max_display_ipos]
 
             for ipo in display_ipos:
                 date_str = (

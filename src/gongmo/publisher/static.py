@@ -83,7 +83,12 @@ class StaticSiteGenerator:
             description = (
                 f"{now.month}월 공모주 일정: {summary} {settings.site_description}"
             )
-            title = f"{now.month}월 공모주 캘린더 - {upcoming_ipos[0].company_name} 외 {len(upcoming_ipos)}건"
+
+            # SEO 타이틀 생성 로직 수정
+            if len(upcoming_ipos) == 1:
+                title = f"{now.month}월 공모주 캘린더 - {upcoming_ipos[0].company_name}"
+            else:
+                title = f"{now.month}월 공모주 캘린더 - {upcoming_ipos[0].company_name} 외 {len(upcoming_ipos) - 1}건"
         else:
             description = settings.site_description
             title = settings.site_title
