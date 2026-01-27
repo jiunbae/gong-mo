@@ -47,9 +47,7 @@ class OGImageGenerator:
         # 텍스트 로직
         try:
             # 폰트 로드
-            title_font = self._get_font(
-                60, index=1
-            )  # TTC index 1이 대략 Bold인 경우 많음
+            title_font = self._get_font(60, bold=True)
             subtitle_font = self._get_font(40)
             list_font = self._get_font(35)
             footer_font = self._get_font(25)
@@ -122,11 +120,17 @@ class OGImageGenerator:
         logger.info(f"OG 이미지 및 아이콘 생성 완료: {output_path}")
         return output_path
 
-    def _get_font(self, size: int, index: int = 0) -> ImageFont.FreeTypeFont:
+    def _get_font(self, size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
         """시스템 폰트 로드"""
         if self.font_path:
             try:
+                # TTC 파일의 경우 인덱스 1이 대략 Bold, TTF는 인덱스 0만 사용
+                index = 1 if bold and self.font_path.lower().endswith(".ttc") else 0
                 return ImageFont.truetype(self.font_path, size, index=index)
             except (IOError, OSError):
-                pass
+                # 인덱스 1 로드 실패 시 인덱스 0으로 재시도
+                try:
+                    return ImageFont.truetype(self.font_path, size, index=0)
+                except (IOError, OSError):
+                    pass
         return ImageFont.load_default()
