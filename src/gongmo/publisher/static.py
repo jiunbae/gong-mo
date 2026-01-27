@@ -46,14 +46,16 @@ class StaticSiteGenerator:
 
         logger.info(f"정적 데이터 생성: {json_path} ({len(ipos)}건)")
 
+        # 다가오는 일정 계산 (중앙화)
+        now = datetime.now()
+        upcoming_ipos = self._get_upcoming_ipos(ipos, now.date())
+
         # 2. HTML 파일 생성 (SEO 최적화)
-        self.generate_index(ipos, now)
+        self.generate_index(ipos, now, upcoming_ipos)
 
         # 3. OG 이미지 생성
         try:
             og_gen = OGImageGenerator(self.output_dir)
-            # 다가오는 일정만 이미지에 포함하도록 중앙화
-            upcoming_ipos = self._get_upcoming_ipos(ipos, now.date())
             og_gen.generate(upcoming_ipos, now)
         except Exception as e:
             logger.error(f"OG 이미지 생성 실패: {e}")
@@ -72,12 +74,11 @@ class StaticSiteGenerator:
         upcoming.sort(key=lambda x: x.subscription_start)
         return upcoming
 
-    def generate_index(self, ipos: list[IPOSchedule], now: datetime):
+    def generate_index(
+        self, ipos: list[IPOSchedule], now: datetime, upcoming_ipos: list[IPOSchedule]
+    ):
         """SEO 메타 태그가 포함된 index.html 생성"""
         template = self.jinja_env.get_template("index.html.j2")
-
-        # 다가오는 주요 IPO 요약 (메타 설명용)
-        upcoming_ipos = self._get_upcoming_ipos(ipos, now.date())
 
         if upcoming_ipos:
             names = [ipo.company_name for ipo in upcoming_ipos[:3]]
@@ -133,6 +134,7 @@ class StaticSiteGenerator:
         encoded_cal_id = urllib.parse.quote(cal_id)
 
         calendar_embed_url = f"https://calendar.google.com/calendar/embed?src={encoded_cal_id}&ctz=Asia%2FSeoul&mode=MONTH&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0"
+
         calendar_subscribe_url = (
             f"https://calendar.google.com/calendar/u/0?cid={encoded_cal_id}"
         )

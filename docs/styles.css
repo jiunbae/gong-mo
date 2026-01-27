@@ -140,6 +140,7 @@ header .subtitle {
     display: flex;
     gap: 8px;
     margin-bottom: 16px;
+    flex-wrap: wrap;
 }
 
 .filter-btn {
@@ -288,6 +289,7 @@ footer a:hover {
 }
 
 @media (max-width: 600px) {
+
     .container {
         padding: 12px;
     }
@@ -314,11 +316,6 @@ footer a:hover {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
-}
-
-.filter-controls {
-    flex-wrap: wrap;
-    gap: 8px;
 }
 
 .footer-links {

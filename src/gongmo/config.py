@@ -43,7 +43,7 @@ class Settings(BaseSettings):
     google_adsense_slot_top: str = ""
     google_adsense_slot_bottom: str = ""
 
-    font_path: str = "/System/Library/Fonts/AppleSDGothicNeo.ttc"
+    font_path: str = ""
     max_display_ipos: int = 5
 
     class Config:
