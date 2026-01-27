@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <meta name="keywords" content="공모주, IPO, 청약, 주식, 캘린더, 일정">
+    <link rel="canonical" href="{{ site_url }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site_url }}">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:image" content="{{ og_image_url }}">
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0066cc">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="{{ og_image_url }}">
+
+    <script type="application/ld+json">
+        {{ structured_data | safe }}
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ ga_id }}');
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_client_id }}"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>공모주 캘린더</h1>
+            <p class="subtitle">대한민국 IPO 청약 일정</p>
+        </header>
+
+
+        <div class="ad-banner" role="region" aria-label="광고">
+            <!-- gong-mo -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="{{ adsense_client_id }}"
+                 data-ad-slot="{{ adsense_slot_top }}"
+                 data-ad-format="auto"
+                 data-full-width-responsive="false"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <section class="calendar-section">
+            <iframe src="{{ calendar_embed_url }}"
+                    title="공모주 구글 캘린더"
+                    width="100%"
+                    height="600">
+            </iframe>
+            <section class="subscribe-section">
+                <div class="button-group">
+                    <a href="{{ calendar_subscribe_url }}"
+                       class="subscribe-btn" target="_blank" rel="noopener">
+                        + Google 캘린더에 추가
+                    </a>
+                </div>
+                <div class="update-info update-info--text">
+                    <span class="label">마지막 업데이트:</span>
+                    <span id="last-updated">-</span>
+                </div>
+            </section>
+        </section>
+
+
+
+        <section class="ipo-list-section">
+
+            <h2>청약 일정 목록</h2>
+            <div class="filter-controls" id="filter-controls">
+                <button class="filter-btn active" data-filter="upcoming">다가오는 일정</button>
+                <button class="filter-btn" data-filter="all">전체</button>
+            </div>
+            <div id="ipo-list" class="ipo-list">
+                <p class="loading">데이터를 불러오는 중...</p>
+                <!-- 인피드 광고 영역 (5번째 항목 위치) -->
+            </div>
+        </section>
+
+        <footer>
+        <div class="ad-banner-bottom" role="region" aria-label="광고">
+            <!-- gong-mo-bottom -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="{{ adsense_client_id }}"
+                 data-ad-slot="{{ adsense_slot_bottom }}"
+                 data-ad-format="auto"
+                 data-full-width-responsive="false"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div class="footer-links">
+            데이터를 가져온 <a href="https://www.38.co.kr" class="footer-source-link" target="_blank" rel="noopener">38커뮤니케이션 바로가기</a>
+            <p class="footer-disclaimer">본 서비스는 38커뮤니케이션과는 별개로 운영되는 서비스입니다.</p>
+        </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

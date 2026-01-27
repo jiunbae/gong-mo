@@ -34,6 +34,18 @@ class Settings(BaseSettings):
     # 로깅
     log_level: str = "INFO"
 
+    site_url: str = "https://jiun.dev/gong-mo/"
+    site_title: str = "공모주 캘린더 - 대한민국 IPO 청약 일정"
+    site_description: str = "대한민국 공모주 청약 일정과 IPO 캘린더 정보를 확인하고, 구글 캘린더에 추가하여 놓치지 마세요."
+
+    google_analytics_id: str = ""
+    google_adsense_client_id: str = ""
+    google_adsense_slot_top: str = ""
+    google_adsense_slot_bottom: str = ""
+
+    font_path: str = ""
+    max_display_ipos: int = 5
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
