@@ -38,11 +38,12 @@ class Settings(BaseSettings):
     site_title: str = "공모주 캘린더 - 대한민국 IPO 청약 일정"
     site_description: str = "대한민국 공모주 청약 일정과 IPO 캘린더 정보를 확인하고, 구글 캘린더에 추가하여 놓치지 마세요."
 
-    google_analytics_id: str = "G-G8EY2E5T71"
-    google_adsense_client_id: str = "ca-pub-3746587025439528"
-    google_adsense_slot_top: str = "7570903568"
-    google_adsense_slot_bottom: str = "4370025151"
+    google_analytics_id: str = ""
+    google_adsense_client_id: str = ""
+    google_adsense_slot_top: str = ""
+    google_adsense_slot_bottom: str = ""
 
+    font_path: str = "/System/Library/Fonts/AppleSDGothicNeo.ttc"
     max_display_ipos: int = 5
 
     class Config:

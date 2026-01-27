@@ -67,7 +67,7 @@ class StaticSiteGenerator:
             for ipo in ipos
             if ipo.subscription_start and ipo.subscription_start >= reference_date
         ]
-        upcoming.sort(key=lambda x: x.subscription_start or datetime.max.date())
+        upcoming.sort(key=lambda x: x.subscription_start)
         return upcoming
 
     def generate_index(self, ipos: list[IPOSchedule], now: datetime):
@@ -123,8 +123,6 @@ class StaticSiteGenerator:
 
         # 캘린더 URL 생성 (settings.google_calendar_id 기반)
         cal_id = settings.google_calendar_id
-        import urllib.parse
-
         encoded_cal_id = urllib.parse.quote(cal_id)
 
         calendar_embed_url = f"https://calendar.google.com/calendar/embed?src={encoded_cal_id}&ctz=Asia%2FSeoul&mode=MONTH&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0"
