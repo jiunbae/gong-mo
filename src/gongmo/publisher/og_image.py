@@ -80,7 +80,11 @@ class OGImageGenerator:
 
                 # 주관사/공모가 요약 (우측)
                 price = ipo.offer_price_range
-                info = f"{ipo.lead_underwriter or ''} | {price}"
+                info = (
+                    f"{ipo.lead_underwriter} | {price}"
+                    if ipo.lead_underwriter
+                    else price
+                )
                 draw.text((600, y_offset), info, font=list_font, fill=(108, 117, 125))
 
                 y_offset += 60
@@ -97,7 +101,7 @@ class OGImageGenerator:
             footer_text = "jiun.dev/gong-mo | 공모주 캘린더 봇"
             draw.text((60, 560), footer_text, font=footer_font, fill=(173, 181, 189))
 
-        except Exception as e:
+        except (AttributeError, TypeError, ValueError) as e:
             logger.error(f"OG 이미지 텍스트 그리기 실패: {e}")
             draw.text((60, 300), "공모주 캘린더", fill=(0, 0, 0))
 

@@ -16,6 +16,7 @@ from ..models.ipo import IPOSchedule
 from ..config import settings
 
 logger = logging.getLogger(__name__)
+SUMMARY_IPO_COUNT = 3
 
 
 class StaticSiteGenerator:
@@ -47,7 +48,6 @@ class StaticSiteGenerator:
         logger.info(f"정적 데이터 생성: {json_path} ({len(ipos)}건)")
 
         # 다가오는 일정 계산 (중앙화)
-        now = datetime.now()
         upcoming_ipos = self._get_upcoming_ipos(ipos, now.date())
 
         # 2. HTML 파일 생성 (SEO 최적화)
@@ -57,7 +57,7 @@ class StaticSiteGenerator:
         try:
             og_gen = OGImageGenerator(self.output_dir)
             og_gen.generate(upcoming_ipos, now)
-        except Exception as e:
+        except (IOError, AttributeError, TypeError, ValueError) as e:
             logger.error(f"OG 이미지 생성 실패: {e}")
 
         return json_path
@@ -81,7 +81,7 @@ class StaticSiteGenerator:
         template = self.jinja_env.get_template("index.html.j2")
 
         if upcoming_ipos:
-            names = [ipo.company_name for ipo in upcoming_ipos[:3]]
+            names = [ipo.company_name for ipo in upcoming_ipos[:SUMMARY_IPO_COUNT]]
             summary = f"[{', '.join(names)}] 등 {len(upcoming_ipos)}건의 청약 일정을 확인하세요."
             description = (
                 f"{now.month}월 공모주 일정: {summary} {settings.site_description}"
