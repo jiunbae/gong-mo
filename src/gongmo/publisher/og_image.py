@@ -59,12 +59,7 @@ class OGImageGenerator:
             draw.text((60, 80), title, font=title_font, fill=(33, 37, 41))
 
             # 통계 정보
-            upcoming_ipos = [
-                ipo
-                for ipo in ipos
-                if ipo.subscription_start and ipo.subscription_start >= now.date()
-            ]
-            stats_text = f"총 {len(ipos)}건의 일정 | 청약 예정 {len(upcoming_ipos)}건"
+            stats_text = f"총 {len(ipos)}건의 일정"
             draw.text((60, 160), stats_text, font=subtitle_font, fill=(108, 117, 125))
 
             # 구분선
@@ -72,7 +67,7 @@ class OGImageGenerator:
 
             # 주요 일정 리스트 (최대 N개)
             y_offset = 260
-            display_ipos = (upcoming_ipos or ipos)[: settings.max_display_ipos]
+            display_ipos = ipos[: settings.max_display_ipos]
 
             for ipo in display_ipos:
                 date_str = (
@@ -90,10 +85,10 @@ class OGImageGenerator:
 
                 y_offset += 60
 
-            if len(display_ipos) < len(upcoming_ipos):
+            if len(ipos) > len(display_ipos):
                 draw.text(
                     (80, y_offset + 10),
-                    f"...외 {len(upcoming_ipos) - len(display_ipos)}건 더보기",
+                    f"...외 {len(ipos) - len(display_ipos)}건 더보기",
                     font=subtitle_font,
                     fill=(0, 102, 204),
                 )

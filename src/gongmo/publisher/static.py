@@ -52,7 +52,9 @@ class StaticSiteGenerator:
         # 3. OG 이미지 생성
         try:
             og_gen = OGImageGenerator(self.output_dir)
-            og_gen.generate(ipos, now)
+            # 다가오는 일정만 이미지에 포함하도록 중앙화
+            upcoming_ipos = self._get_upcoming_ipos(ipos, now.date())
+            og_gen.generate(upcoming_ipos, now)
         except Exception as e:
             logger.error(f"OG 이미지 생성 실패: {e}")
 
