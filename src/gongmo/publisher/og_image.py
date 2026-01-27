@@ -23,12 +23,16 @@ class OGImageGenerator:
 
         # 폰트 설정 (macOS 기준)
         self.font_path = "/System/Library/Fonts/AppleSDGothicNeo.ttc"
+        self.font_path_bold = "/System/Library/Fonts/AppleSDGothicNeo.ttc"  # TTC는 파일 내부에 bold가 포함될 수 있음
+
         if not Path(self.font_path).exists():
-            # 시스템 폰트가 없을 경우 기본 폰트 사용
             self.font_path = None
 
-    def generate(self, ipos: list[IPOSchedule]) -> Path:
+    def generate(self, ipos: list[IPOSchedule], now: Optional[datetime] = None) -> Path:
         """수집된 데이터를 기반으로 OG 이미지 생성"""
+        if now is None:
+            now = datetime.now()
+
         # 이미지 크기 (OG 규격: 1200x630)
         width, height = 1200, 630
 
@@ -43,13 +47,14 @@ class OGImageGenerator:
         # 텍스트 로직
         try:
             # 폰트 로드
-            title_font = self._get_font(60, bold=True)
+            title_font = self._get_font(
+                60, index=1
+            )  # TTC index 1이 대략 Bold인 경우 많음
             subtitle_font = self._get_font(40)
             list_font = self._get_font(35)
             footer_font = self._get_font(25)
 
             # 제목
-            now = datetime.now()
             title = f"{now.year}년 {now.month}월 공모주 청약 일정"
             draw.text((60, 80), title, font=title_font, fill=(33, 37, 41))
 
@@ -65,9 +70,12 @@ class OGImageGenerator:
             # 구분선
             draw.line([60, 220, 1140, 220], fill=(222, 226, 230), width=2)
 
-            # 주요 일정 리스트 (최대 5개)
+            # 주요 일정 리스트 (최대 N개)
             y_offset = 260
-            display_ipos = upcoming_ipos[:5] if upcoming_ipos else ipos[:5]
+            max_display = 5
+            display_ipos = (
+                upcoming_ipos[:max_display] if upcoming_ipos else ipos[:max_display]
+            )
 
             for ipo in display_ipos:
                 date_str = (
@@ -99,7 +107,6 @@ class OGImageGenerator:
 
         except Exception as e:
             logger.error(f"OG 이미지 텍스트 그리기 실패: {e}")
-            # 최소한의 텍스트라도 출력
             draw.text((60, 300), "공모주 캘린더", fill=(0, 0, 0))
 
         output_path = self.output_dir / "og-image.png"
@@ -108,12 +115,13 @@ class OGImageGenerator:
         logger.info(f"OG 이미지 생성 완료: {output_path}")
         return output_path
 
-    def _get_font(self, size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
+    def _get_font(self, size: int, index: int = 0) -> ImageFont.FreeTypeFont:
         """시스템 폰트 로드"""
         if self.font_path:
             try:
-                # TTC 파일의 경우 인덱스 지정이 필요할 수 있음
-                return ImageFont.truetype(self.font_path, size, index=0)
-            except Exception:
+                return ImageFont.truetype(self.font_path, size, index=index)
+            except (IOError, OSError):
                 return ImageFont.load_default()
+        return ImageFont.load_default()
+
         return ImageFont.load_default()

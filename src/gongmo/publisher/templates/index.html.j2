@@ -28,19 +28,19 @@
         {{ structured_data | safe }}
     </script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8EY2E5T71"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_id }}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-G8EY2E5T71');
+      gtag('config', '{{ ga_id }}');
     </script>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3746587025439528"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_client_id }}"
      crossorigin="anonymous"></script>
 </head>
 <body>
@@ -55,8 +55,8 @@
             <!-- gong-mo -->
             <ins class="adsbygoogle"
                  style="display:block"
-                 data-ad-client="ca-pub-3746587025439528"
-                 data-ad-slot="7570903568"
+                 data-ad-client="{{ adsense_client_id }}"
+                 data-ad-slot="{{ adsense_slot_top }}"
                  data-ad-format="auto"
                  data-full-width-responsive="false"></ins>
             <script>
@@ -65,7 +65,7 @@
         </div>
 
         <section class="calendar-section">
-            <iframe src="https://calendar.google.com/calendar/embed?src=REDACTED_CALENDAR_ID%40group.calendar.google.com&ctz=Asia%2FSeoul&mode=MONTH&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0"
+            <iframe src="{{ calendar_embed_url }}"
                     style="border: 0"
                     width="100%"
                     height="600"
@@ -74,7 +74,7 @@
             </iframe>
         <section class="subscribe-section" style="margin-top: 20px;">
             <div class="button-group">
-                <a href="https://calendar.google.com/calendar/u/0?cid=ODdhOWZlYjBkMDE0ODU1NjRmMWM0MjY3ZDYzYjQ2ZWMzMjljM2NiNDVjMDg5ZjEyOWExYzhlZGM1NDY5MzFjZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+                <a href="{{ calendar_subscribe_url }}"
                    class="subscribe-btn" target="_blank" rel="noopener">
                     + Google 캘린더에 추가
                 </a>
@@ -104,8 +104,8 @@
             <!-- gong-mo-bottom -->
             <ins class="adsbygoogle"
                  style="display:block"
-                 data-ad-client="ca-pub-3746587025439528"
-                 data-ad-slot="4370025151"
+                 data-ad-client="{{ adsense_client_id }}"
+                 data-ad-slot="{{ adsense_slot_bottom }}"
                  data-ad-format="auto"
                  data-full-width-responsive="false"></ins>
             <script>
