@@ -113,7 +113,18 @@ class OGImageGenerator:
         output_path = self.output_dir / "og-image.png"
         image.save(output_path, "PNG")
 
-        logger.info(f"OG 이미지 생성 완료: {output_path}")
+        # PWA 아이콘 생성 (효율성을 위해 별도 크기로 저장)
+        for size in [192, 512]:
+            icon_path = self.output_dir / f"icon-{size}.png"
+            # 1:1 비율로 크롭하여 리사이즈
+            icon_image = image.crop(
+                (width // 2 - height // 2, 0, width // 2 + height // 2, height)
+            )
+            icon_image = icon_image.resize((size, size), Image.Resampling.LANCZOS)
+            icon_image.save(icon_path, "PNG")
+            logger.debug(f"PWA 아이콘 생성: {icon_path}")
+
+        logger.info(f"OG 이미지 및 아이콘 생성 완료: {output_path}")
         return output_path
 
     def _get_font(self, size: int, index: int = 0) -> ImageFont.FreeTypeFont:
