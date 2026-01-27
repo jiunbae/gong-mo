@@ -66,20 +66,18 @@
 
         <section class="calendar-section">
             <iframe src="{{ calendar_embed_url }}"
-                    style="border: 0"
                     width="100%"
                     height="600"
-                    frameborder="0"
                     scrolling="no">
             </iframe>
-        <section class="subscribe-section" style="margin-top: 20px;">
+        <section class="subscribe-section">
             <div class="button-group">
                 <a href="{{ calendar_subscribe_url }}"
                    class="subscribe-btn" target="_blank" rel="noopener">
                     + Google 캘린더에 추가
                 </a>
             </div>
-            <div class="update-info" style="display: block; margin-top: 10px; font-size: 0.8rem; color: #5f6368; box-shadow: none; background: transparent; padding: 0;">
+            <div class="update-info update-info--text">
                 <span class="label">마지막 업데이트:</span>
                 <span id="last-updated">-</span>
             </div>

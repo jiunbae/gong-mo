@@ -10,6 +10,7 @@ from typing import Optional
 from PIL import Image, ImageDraw, ImageFont
 
 from ..models.ipo import IPOSchedule
+from ..config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -21,11 +22,10 @@ class OGImageGenerator:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-        # 폰트 설정 (macOS 기준)
-        self.font_path = "/System/Library/Fonts/AppleSDGothicNeo.ttc"
-        self.font_path_bold = "/System/Library/Fonts/AppleSDGothicNeo.ttc"  # TTC는 파일 내부에 bold가 포함될 수 있음
+        # 폰트 설정 (Settings에서 로드)
+        self.font_path = settings.font_path
 
-        if not Path(self.font_path).exists():
+        if not self.font_path or not Path(self.font_path).exists():
             self.font_path = None
 
     def generate(self, ipos: list[IPOSchedule], now: Optional[datetime] = None) -> Path:
@@ -72,9 +72,10 @@ class OGImageGenerator:
 
             # 주요 일정 리스트 (최대 N개)
             y_offset = 260
-            max_display = 5
             display_ipos = (
-                upcoming_ipos[:max_display] if upcoming_ipos else ipos[:max_display]
+                upcoming_ipos[: settings.max_display_ipos]
+                if upcoming_ipos
+                else ipos[: settings.max_display_ipos]
             )
 
             for ipo in display_ipos:
@@ -121,7 +122,7 @@ class OGImageGenerator:
             try:
                 return ImageFont.truetype(self.font_path, size, index=index)
             except (IOError, OSError):
-                return ImageFont.load_default()
+                pass
         return ImageFont.load_default()
 
         return ImageFont.load_default()
