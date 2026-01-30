@@ -199,8 +199,13 @@ class IPOSchedule:
         }
 
     def _generate_event_id(self, event_type: IPOEventType, start_date: date) -> str:
-        """이벤트별 고유 ID 생성"""
-        raw = f"{self.company_name}_{event_type.value}_{start_date.isoformat()}"
+        """이벤트별 고유 ID 생성
+
+        Note: start_date는 하위 호환성을 위해 파라미터로 유지하지만,
+        ID 생성에는 사용하지 않음. 날짜가 변경되어도 기존 이벤트를
+        올바르게 업데이트할 수 있도록 회사명 + 이벤트타입만 사용.
+        """
+        raw = f"{self.company_name}_{event_type.value}"
         return hashlib.md5(raw.encode()).hexdigest()[:16]
 
     def _build_description(self, event_type: IPOEventType) -> str:

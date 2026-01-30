@@ -77,7 +77,7 @@ class GoogleCalendarAuth:
                     port=54321,
                     prompt="consent",
                     success_message="인증 성공! 이 창을 닫아도 됩니다.",
-                    open_browser=False,
+                    open_browser=True,
                 )
                 logger.info("새 인증 완료")
 

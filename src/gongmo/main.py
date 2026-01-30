@@ -158,6 +158,88 @@ class IPOCalendarBot:
             logger.info("Google Calendar 인증이 필요합니다.")
             return False
 
+    def cleanup_calendar(self, company_name: str = None) -> dict:
+        """캘린더 이벤트 정리
+
+        Args:
+            company_name: 특정 회사만 정리. None이면 전체 정리.
+        """
+        logger.info("=" * 50)
+        if company_name:
+            logger.info(f"'{company_name}' 이벤트 정리 시작")
+        else:
+            logger.info("전체 이벤트 정리 시작")
+        logger.info("=" * 50)
+
+        stats = {"deleted": 0, "errors": 0}
+
+        self.calendar_client = GoogleCalendarClient()
+
+        if company_name:
+            results = self.calendar_client.cleanup_company_events(company_name)
+        else:
+            results = self.calendar_client.cleanup_all_events()
+
+        for result in results:
+            if result.action == SyncAction.DELETE:
+                stats["deleted"] += 1
+                logger.info(f"  삭제: {result.event_title}")
+            elif result.action == SyncAction.ERROR:
+                stats["errors"] += 1
+                logger.error(f"  오류: {result.event_title} - {result.error}")
+
+        logger.info("\n" + "=" * 50)
+        logger.info(f"정리 완료: 삭제 {stats['deleted']}건, 오류 {stats['errors']}건")
+        logger.info("=" * 50)
+
+        return stats
+
+    def resync_calendar(self) -> dict:
+        """캘린더 전체 재동기화 (정리 후 다시 등록)"""
+        logger.info("=" * 50)
+        logger.info("캘린더 전체 재동기화 시작")
+        logger.info("=" * 50)
+
+        # 1. 기존 이벤트 모두 삭제
+        logger.info("\n[1/3] 기존 이벤트 정리 중...")
+        cleanup_stats = self.cleanup_calendar()
+
+        # 2. 공모주 정보 새로 수집
+        logger.info("\n[2/3] 공모주 정보 수집 중...")
+        ipo_list = self.collector.collect(verify_details=True)
+        logger.info(f"  -> {len(ipo_list)}건 수집 완료")
+
+        # 3. 캘린더 동기화
+        logger.info("\n[3/3] 캘린더 재등록 중...")
+        stats = {
+            "cleaned": cleanup_stats["deleted"],
+            "collected": len(ipo_list),
+            "created": 0,
+            "errors": cleanup_stats["errors"],
+        }
+
+        if not self.calendar_client:
+            self.calendar_client = GoogleCalendarClient()
+
+        for ipo in ipo_list:
+            results = self.calendar_client.sync_ipo(ipo)
+            for result in results:
+                if result.action == SyncAction.CREATE:
+                    stats["created"] += 1
+                elif result.action == SyncAction.ERROR:
+                    stats["errors"] += 1
+
+        logger.info("\n" + "=" * 50)
+        logger.info("재동기화 완료!")
+        logger.info(f"  - 정리: {stats['cleaned']}건")
+        logger.info(f"  - 수집: {stats['collected']}건")
+        logger.info(f"  - 생성: {stats['created']}건")
+        if stats["errors"] > 0:
+            logger.warning(f"  - 오류: {stats['errors']}건")
+        logger.info("=" * 50)
+
+        return stats
+
     def publish_site(self, push: bool = True) -> dict:
         """정적 사이트 데이터 생성 및 GitHub 푸시"""
         logger.info("=" * 50)
@@ -234,6 +316,9 @@ def main():
   gongmo --check-auth       # 인증 상태 확인
   gongmo --publish          # 정적 사이트 업데이트 및 GitHub 푸시
   gongmo --publish --no-push # 정적 사이트만 생성 (푸시 안 함)
+  gongmo --cleanup          # 캘린더의 모든 공모주 이벤트 삭제
+  gongmo --cleanup "회사명"  # 특정 회사 이벤트만 삭제
+  gongmo --resync           # 전체 재동기화 (삭제 후 재등록)
         """,
     )
 
@@ -268,6 +353,18 @@ def main():
         action="store_true",
         help="--publish 시 GitHub 푸시 안 함",
     )
+    parser.add_argument(
+        "--cleanup",
+        nargs="?",
+        const="__ALL__",
+        metavar="회사명",
+        help="캘린더 이벤트 정리 (회사명 지정 시 해당 회사만)",
+    )
+    parser.add_argument(
+        "--resync",
+        action="store_true",
+        help="캘린더 전체 재동기화 (기존 삭제 후 재등록)",
+    )
 
     args = parser.parse_args()
 
@@ -284,6 +381,15 @@ def main():
             bot.list_events()
         elif args.publish:
             bot.publish_site(push=not args.no_push)
+        elif args.cleanup:
+            company = None if args.cleanup == "__ALL__" else args.cleanup
+            stats = bot.cleanup_calendar(company_name=company)
+            if stats["errors"] > 0:
+                sys.exit(1)
+        elif args.resync:
+            stats = bot.resync_calendar()
+            if stats["errors"] > 0:
+                sys.exit(1)
         else:
             stats = bot.run(dry_run=args.dry_run)
             # 오류가 있으면 종료 코드 1

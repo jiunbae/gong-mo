@@ -242,3 +242,99 @@ class GoogleCalendarClient:
         except HttpError as e:
             logger.error(f"캘린더 정보 조회 실패: {e}")
             return None
+
+    def cleanup_all_events(self) -> list[SyncResult]:
+        """gong-mo-bot이 생성한 모든 이벤트 삭제 (전체 초기화용)"""
+        results = []
+
+        try:
+            # source=gong-mo-bot인 모든 이벤트 검색
+            page_token = None
+            all_events = []
+
+            while True:
+                events_result = self.service.events().list(
+                    calendarId=self.calendar_id,
+                    privateExtendedProperty="source=gong-mo-bot",
+                    singleEvents=True,
+                    maxResults=250,
+                    pageToken=page_token,
+                ).execute()
+
+                all_events.extend(events_result.get("items", []))
+                page_token = events_result.get("nextPageToken")
+
+                if not page_token:
+                    break
+
+            logger.info(f"삭제할 이벤트 {len(all_events)}개 발견")
+
+            for event in all_events:
+                try:
+                    self.service.events().delete(
+                        calendarId=self.calendar_id,
+                        eventId=event["id"],
+                    ).execute()
+
+                    results.append(SyncResult(
+                        action=SyncAction.DELETE,
+                        event_title=event.get("summary", "Unknown"),
+                        event_id=event["id"],
+                    ))
+                    logger.info(f"이벤트 삭제: {event.get('summary')}")
+
+                except HttpError as e:
+                    results.append(SyncResult(
+                        action=SyncAction.ERROR,
+                        event_title=event.get("summary", "Unknown"),
+                        event_id=event["id"],
+                        error=str(e),
+                    ))
+
+        except HttpError as e:
+            logger.error(f"이벤트 검색 실패: {e}")
+
+        return results
+
+    def cleanup_company_events(self, company_name: str) -> list[SyncResult]:
+        """특정 회사의 모든 이벤트 삭제 (중복 정리용)"""
+        results = []
+
+        try:
+            # 회사명으로 이벤트 검색
+            events_result = self.service.events().list(
+                calendarId=self.calendar_id,
+                privateExtendedProperty=f"company_name={company_name}",
+                singleEvents=True,
+                maxResults=50,
+            ).execute()
+
+            events = events_result.get("items", [])
+            logger.info(f"{company_name}: {len(events)}개 이벤트 발견")
+
+            for event in events:
+                try:
+                    self.service.events().delete(
+                        calendarId=self.calendar_id,
+                        eventId=event["id"],
+                    ).execute()
+
+                    results.append(SyncResult(
+                        action=SyncAction.DELETE,
+                        event_title=event.get("summary", "Unknown"),
+                        event_id=event["id"],
+                    ))
+                    logger.info(f"이벤트 삭제: {event.get('summary')}")
+
+                except HttpError as e:
+                    results.append(SyncResult(
+                        action=SyncAction.ERROR,
+                        event_title=event.get("summary", "Unknown"),
+                        event_id=event["id"],
+                        error=str(e),
+                    ))
+
+        except HttpError as e:
+            logger.error(f"이벤트 검색 실패: {e}")
+
+        return results
