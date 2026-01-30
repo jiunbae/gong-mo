@@ -58,8 +58,12 @@ class Site38Collector(BaseCollector):
         response.encoding = "euc-kr"
         return response.text
 
-    def collect(self) -> list[IPOSchedule]:
-        """공모주 청약 일정 수집"""
+    def collect(self, verify_details: bool = True) -> list[IPOSchedule]:
+        """공모주 청약 일정 수집
+
+        Args:
+            verify_details: True면 상세 페이지에서 날짜 검증 (권장)
+        """
         results = []
 
         try:
@@ -93,6 +97,11 @@ class Site38Collector(BaseCollector):
             # 유효한 데이터만 필터링 (청약일이 있는 것만)
             results = self._filter_valid_ipos(results)
 
+            # 상세 페이지에서 날짜 검증 (목록 페이지 데이터가 부정확할 수 있음)
+            if verify_details:
+                self._log_info("상세 페이지에서 날짜 검증 중...")
+                results = self._verify_dates_from_detail(results)
+
             self._log_info(f"총 {len(results)}건 수집 완료")
 
         except Exception as e:
@@ -100,6 +109,53 @@ class Site38Collector(BaseCollector):
             raise
 
         return results
+
+    def _verify_dates_from_detail(self, ipos: list[IPOSchedule]) -> list[IPOSchedule]:
+        """상세 페이지에서 날짜 정보 검증 및 보정"""
+        verified = []
+
+        for ipo in ipos:
+            if not ipo.detail_url:
+                verified.append(ipo)
+                continue
+
+            try:
+                time.sleep(settings.request_delay * 0.5)  # 서버 부하 방지
+                detail = self.collect_detail(ipo.detail_url)
+
+                if detail:
+                    # 청약일 검증
+                    if "subscription_start" in detail:
+                        old_start = ipo.subscription_start
+                        new_start = detail["subscription_start"]
+                        if old_start != new_start:
+                            logger.warning(
+                                f"{ipo.company_name}: 청약일 보정 "
+                                f"{old_start} -> {new_start}"
+                            )
+                        ipo.subscription_start = new_start
+                        ipo.subscription_end = detail.get("subscription_end", new_start)
+
+                    # 수요예측일 추가
+                    if "demand_forecast_start" in detail:
+                        ipo.demand_forecast_start = detail["demand_forecast_start"]
+                        ipo.demand_forecast_end = detail.get("demand_forecast_end")
+
+                    # 환불일 추가
+                    if "refund_date" in detail:
+                        ipo.refund_date = detail["refund_date"]
+
+                    # 상장일 보정
+                    if "listing_date" in detail and not ipo.listing_date:
+                        ipo.listing_date = detail["listing_date"]
+
+                verified.append(ipo)
+
+            except Exception as e:
+                logger.warning(f"{ipo.company_name}: 상세 검증 실패 - {e}")
+                verified.append(ipo)  # 실패해도 기존 데이터 유지
+
+        return verified
 
     def _filter_valid_ipos(self, ipos: list[IPOSchedule]) -> list[IPOSchedule]:
         """유효한 IPO 데이터만 필터링"""
@@ -427,6 +483,87 @@ class Site38Collector(BaseCollector):
         return text if text else None
 
     def collect_detail(self, detail_url: str) -> Optional[dict]:
-        """상세 페이지에서 추가 정보 수집 (확장용)"""
-        # 필요시 구현: 수요예측 결과, 환불일 등 추가 정보
-        pass
+        """상세 페이지에서 정확한 일정 정보 수집"""
+        if not detail_url:
+            return None
+
+        try:
+            html = self._fetch_page(detail_url)
+            soup = BeautifulSoup(html, "lxml")
+
+            result = {}
+
+            # 테이블에서 일정 정보 추출
+            tables = soup.find_all("table")
+            for table in tables:
+                rows = table.find_all("tr")
+                for row in rows:
+                    cells = row.find_all(["th", "td"])
+                    if len(cells) < 2:
+                        continue
+
+                    label = cells[0].get_text(strip=True)
+                    value = cells[1].get_text(strip=True)
+
+                    # 공모청약일 파싱
+                    if "공모청약" in label or "청약일" in label:
+                        start, end = self._parse_detail_date_range(value)
+                        if start:
+                            result["subscription_start"] = start
+                            result["subscription_end"] = end or start
+
+                    # 수요예측일 파싱
+                    elif "수요예측" in label:
+                        start, end = self._parse_detail_date_range(value)
+                        if start:
+                            result["demand_forecast_start"] = start
+                            result["demand_forecast_end"] = end or start
+
+                    # 환불일 파싱
+                    elif "환불" in label:
+                        refund_date = self._parse_single_date(value)
+                        if refund_date:
+                            result["refund_date"] = refund_date
+
+                    # 상장일 파싱
+                    elif "상장일" in label or "상장예정" in label:
+                        listing_date = self._parse_single_date(value)
+                        if listing_date:
+                            result["listing_date"] = listing_date
+
+            return result if result else None
+
+        except Exception as e:
+            logger.warning(f"상세 페이지 파싱 실패 ({detail_url}): {e}")
+            return None
+
+    def _parse_detail_date_range(self, text: str) -> tuple[Optional[date], Optional[date]]:
+        """상세 페이지의 날짜 범위 파싱 (YYYY.MM.DD ~ YYYY.MM.DD 형식)"""
+        if not text or text == "-":
+            return None, None
+
+        # 다양한 구분자 처리
+        text = text.replace("~", "~").replace("–", "~").strip()
+
+        # 패턴: YYYY.MM.DD ~ YYYY.MM.DD
+        pattern = r"(\d{4})\.(\d{1,2})\.(\d{1,2})\s*~\s*(\d{4})\.(\d{1,2})\.(\d{1,2})"
+        match = re.search(pattern, text)
+        if match:
+            try:
+                start = date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
+                end = date(int(match.group(4)), int(match.group(5)), int(match.group(6)))
+                return start, end
+            except ValueError:
+                pass
+
+        # 단일 날짜 패턴
+        single_pattern = r"(\d{4})\.(\d{1,2})\.(\d{1,2})"
+        match = re.search(single_pattern, text)
+        if match:
+            try:
+                single = date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
+                return single, single
+            except ValueError:
+                pass
+
+        return None, None
