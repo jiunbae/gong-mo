@@ -68,8 +68,5 @@ jobs:
         if: ${{ github.event.inputs.sync_calendar == 'true' || github.event_name == 'schedule' }}
         env:
           GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
-          GOOGLE_TOKEN: ${{ secrets.GOOGLE_TOKEN }}
-        run: |
-          echo "$GOOGLE_TOKEN" > token.json
-          PYTHONPATH=src python -m gongmo.main
-          rm -f token.json
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        run: PYTHONPATH=src python -m gongmo.main

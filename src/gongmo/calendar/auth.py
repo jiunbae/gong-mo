@@ -1,13 +1,24 @@
 """
 Google Calendar API 인증 모듈
+
+지원하는 인증 방식:
+1. Service Account (CI/CD 환경 권장)
+   - GOOGLE_SERVICE_ACCOUNT_KEY 환경변수: JSON 키 문자열
+   - GOOGLE_SERVICE_ACCOUNT_FILE 환경변수: JSON 키 파일 경로
+
+2. OAuth 2.0 (로컬 개발용)
+   - credentials.json + token.json 파일 사용
 """
 
+import json
 import logging
+import os
 from pathlib import Path
 from typing import Optional
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
+from google.oauth2 import service_account
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build, Resource
 
@@ -17,6 +28,43 @@ logger = logging.getLogger(__name__)
 
 # Google Calendar API 권한 범위
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
+
+
+def get_service_account_credentials() -> Optional[service_account.Credentials]:
+    """
+    환경 변수에서 Service Account 자격 증명을 로드합니다.
+
+    Returns:
+        Service Account 자격 증명 또는 None (환경 변수가 없는 경우)
+    """
+    # 방법 1: JSON 문자열로 전달
+    sa_key = os.environ.get("GOOGLE_SERVICE_ACCOUNT_KEY")
+    if sa_key:
+        try:
+            key_data = json.loads(sa_key)
+            creds = service_account.Credentials.from_service_account_info(
+                key_data, scopes=SCOPES
+            )
+            logger.info("Service Account 인증 성공 (환경 변수)")
+            return creds
+        except json.JSONDecodeError as e:
+            logger.error(f"GOOGLE_SERVICE_ACCOUNT_KEY JSON 파싱 실패: {e}")
+        except Exception as e:
+            logger.error(f"Service Account 인증 실패: {e}")
+
+    # 방법 2: 파일 경로로 전달
+    sa_file = os.environ.get("GOOGLE_SERVICE_ACCOUNT_FILE")
+    if sa_file and Path(sa_file).exists():
+        try:
+            creds = service_account.Credentials.from_service_account_file(
+                sa_file, scopes=SCOPES
+            )
+            logger.info(f"Service Account 인증 성공 (파일: {sa_file})")
+            return creds
+        except Exception as e:
+            logger.error(f"Service Account 파일 인증 실패: {e}")
+
+    return None
 
 # 싱글톤 서비스 인스턴스
 _calendar_service: Optional[Resource] = None
@@ -35,7 +83,19 @@ class GoogleCalendarAuth:
         self._service: Optional[Resource] = None
 
     def authenticate(self) -> Credentials:
-        """OAuth 2.0 인증 수행 및 자격 증명 반환"""
+        """
+        인증 수행 및 자격 증명 반환
+
+        우선순위:
+        1. Service Account (환경 변수)
+        2. OAuth 토큰 파일 (token.json)
+        3. 새 OAuth 인증 (credentials.json 필요)
+        """
+        # Service Account 우선 확인 (CI/CD 환경)
+        sa_creds = get_service_account_credentials()
+        if sa_creds:
+            return sa_creds
+
         creds = None
 
         # 기존 토큰 확인
@@ -117,6 +177,10 @@ class GoogleCalendarAuth:
 
     def is_authenticated(self) -> bool:
         """인증 상태 확인"""
+        # Service Account가 설정되어 있으면 True
+        if get_service_account_credentials():
+            return True
+
         if not self.token_path.exists():
             return False
 
