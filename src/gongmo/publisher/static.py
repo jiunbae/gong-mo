@@ -131,13 +131,13 @@ class StaticSiteGenerator:
 
         # 캘린더 URL 생성 (settings.google_calendar_id 기반)
         cal_id = settings.google_calendar_id
-        encoded_cal_id = urllib.parse.quote(cal_id)
-
-        calendar_embed_url = f"https://calendar.google.com/calendar/embed?src={encoded_cal_id}&ctz=Asia%2FSeoul&mode=MONTH&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0"
-
-        calendar_subscribe_url = (
-            f"https://calendar.google.com/calendar/u/0?cid={encoded_cal_id}"
-        )
+        if cal_id:
+            encoded_cal_id = urllib.parse.quote(cal_id)
+            calendar_embed_url = f"https://calendar.google.com/calendar/embed?src={encoded_cal_id}&ctz=Asia%2FSeoul&mode=MONTH&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0"
+            calendar_subscribe_url = f"https://calendar.google.com/calendar/u/0?cid={encoded_cal_id}"
+        else:
+            calendar_embed_url = ""
+            calendar_subscribe_url = ""
 
         html_content = template.render(
             title=title,

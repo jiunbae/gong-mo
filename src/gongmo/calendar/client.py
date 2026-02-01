@@ -51,6 +51,11 @@ class GoogleCalendarClient:
         service: Resource = None,
     ):
         self.calendar_id = calendar_id or settings.google_calendar_id
+        if not self.calendar_id:
+            raise ValueError(
+                "GOOGLE_CALENDAR_ID 환경변수가 설정되지 않았습니다.\n"
+                ".env 파일에 GOOGLE_CALENDAR_ID를 설정하거나 환경변수로 전달하세요."
+            )
         self._service = service
 
     @property
