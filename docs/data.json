@@ -1,7 +1,35 @@
 {
-  "last_updated": "2026-01-31T18:29:44.347209",
+  "last_updated": "2026-02-07T18:32:36.625979",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "인벤테라",
+      "subscription_start": "2026-03-16",
+      "subscription_end": "2026-03-17",
+      "listing_date": null,
+      "offer_price_range": "12,100~16,600원",
+      "final_offer_price": null,
+      "offer_price_min": 12100,
+      "offer_price_max": 16600,
+      "lead_underwriter": "NH투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2275&l=&page=1"
+    },
+    {
+      "company_name": "한패스",
+      "subscription_start": "2026-03-16",
+      "subscription_end": "2026-03-17",
+      "listing_date": null,
+      "offer_price_range": "17,000~19,000원",
+      "final_offer_price": null,
+      "offer_price_min": 17000,
+      "offer_price_max": 19000,
+      "lead_underwriter": "한국투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2276&l=&page=1"
+    },
     {
       "company_name": "아이엠바이오로직스",
       "subscription_start": "2026-03-11",
@@ -17,10 +45,24 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2272&l=&page=1"
     },
     {
+      "company_name": "카나프테라퓨틱스",
+      "subscription_start": "2026-03-05",
+      "subscription_end": "2026-03-06",
+      "listing_date": "2026-03-17",
+      "offer_price_range": "16,000~20,000원",
+      "final_offer_price": null,
+      "offer_price_min": 16000,
+      "offer_price_max": 20000,
+      "lead_underwriter": "한국투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2269&l=&page=1"
+    },
+    {
       "company_name": "메쥬",
       "subscription_start": "2026-03-05",
       "subscription_end": "2026-03-06",
-      "listing_date": null,
+      "listing_date": "2025-01-01",
       "offer_price_range": "16,700~21,600원",
       "final_offer_price": null,
       "offer_price_min": 16700,
@@ -62,7 +104,7 @@
       "company_name": "에스팀",
       "subscription_start": "2026-02-23",
       "subscription_end": "2026-02-24",
-      "listing_date": null,
+      "listing_date": "2025-01-01",
       "offer_price_range": "7,000~8,500원",
       "final_offer_price": null,
       "offer_price_min": 7000,
@@ -76,7 +118,7 @@
       "company_name": "케이뱅크",
       "subscription_start": "2026-02-20",
       "subscription_end": "2026-02-23",
-      "listing_date": null,
+      "listing_date": "2026-03-05",
       "offer_price_range": "8,300~9,500원",
       "final_offer_price": null,
       "offer_price_min": 8300,
@@ -85,20 +127,6 @@
       "institutional_competition": null,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2271&l=&page=1"
-    },
-    {
-      "company_name": "카나프테라퓨틱스",
-      "subscription_start": "2026-02-19",
-      "subscription_end": "2026-02-20",
-      "listing_date": "2025-01-01",
-      "offer_price_range": "16,000~20,000원",
-      "final_offer_price": null,
-      "offer_price_min": 16000,
-      "offer_price_max": 20000,
-      "lead_underwriter": "한국투자증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2269&l=&page=1"
     },
     {
       "company_name": "덕양에너젠",
@@ -393,34 +421,6 @@
       "institutional_competition": 210.23,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2256&l=&page=1"
-    },
-    {
-      "company_name": "에임드바이오",
-      "subscription_start": "2025-11-21",
-      "subscription_end": "2025-11-24",
-      "listing_date": "2025-12-04",
-      "offer_price_range": "11,000원",
-      "final_offer_price": 11000,
-      "offer_price_min": 9000,
-      "offer_price_max": 11000,
-      "lead_underwriter": "미래에셋증권",
-      "institutional_competition": 1736.77,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2232&l=&page=1"
-    },
-    {
-      "company_name": "테라뷰홀딩스",
-      "subscription_start": "2025-11-21",
-      "subscription_end": "2025-11-24",
-      "listing_date": "2025-12-09",
-      "offer_price_range": "8,000원",
-      "final_offer_price": 8000,
-      "offer_price_min": 7000,
-      "offer_price_max": 8000,
-      "lead_underwriter": "삼성증권",
-      "institutional_competition": 42.75,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2239&l=&page=1"
     }
   ]
 }
