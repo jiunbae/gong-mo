@@ -35,6 +35,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Collect IPO data
+        env:
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
         run: |
           PYTHONPATH=src python -c "
           from gongmo.collectors.site38 import Site38Collector
@@ -56,7 +58,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           if [ -n "$(git status --porcelain)" ]; then
-            git add docs/data.json
+            git add docs/data.json docs/index.html docs/og-image.png
             git commit -m "Update IPO data - $(date +'%Y-%m-%d %H:%M')"
             git push
             echo "Changes pushed successfully"
