@@ -74,7 +74,12 @@
         renderList();
     }
 
+    function isValidDate(date) {
+        return date instanceof Date && !isNaN(date);
+    }
+
     function formatDate(date) {
+        if (!isValidDate(date)) return '-';
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
@@ -87,10 +92,12 @@
         if (!start) return '-';
 
         const startDate = new Date(start);
+        if (!isValidDate(startDate)) return '-';
         const startStr = `${startDate.getMonth() + 1}/${startDate.getDate()}`;
 
         if (end && start !== end) {
             const endDate = new Date(end);
+            if (!isValidDate(endDate)) return startStr;
             const endStr = `${endDate.getMonth() + 1}/${endDate.getDate()}`;
             return `${startStr} ~ ${endStr}`;
         }
@@ -100,12 +107,14 @@
     function formatDateSimple(dateStr) {
         if (!dateStr) return '';
         const date = new Date(dateStr);
+        if (!isValidDate(date)) return '';
         return `${date.getMonth() + 1}/${date.getDate()}`;
     }
 
     function isPast(dateStr) {
         if (!dateStr) return false;
         const date = new Date(dateStr);
+        if (!isValidDate(date)) return false;
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         return date < today;

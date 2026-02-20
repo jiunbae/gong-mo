@@ -39,12 +39,16 @@ jobs:
           GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
         run: |
           PYTHONPATH=src python -c "
+          import sys
           from gongmo.collectors.site38 import Site38Collector
           from gongmo.publisher.static import StaticSiteGenerator
           from pathlib import Path
 
           collector = Site38Collector()
           ipos = collector.collect()
+          if not ipos:
+              print('ERROR: 수집된 IPO 데이터가 없습니다', file=sys.stderr)
+              sys.exit(1)
           print(f'수집 완료: {len(ipos)}건')
 
           generator = StaticSiteGenerator(Path('docs'))

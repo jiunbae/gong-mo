@@ -136,6 +136,10 @@ class StaticSiteGenerator:
             calendar_embed_url = f"https://calendar.google.com/calendar/embed?src={encoded_cal_id}&ctz=Asia%2FSeoul&mode=MONTH&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0"
             calendar_subscribe_url = f"https://calendar.google.com/calendar/u/0?cid={encoded_cal_id}"
         else:
+            logger.warning(
+                "GOOGLE_CALENDAR_ID가 설정되지 않았습니다. "
+                "캘린더 embed/구독 URL이 비어있는 상태로 생성됩니다."
+            )
             calendar_embed_url = ""
             calendar_subscribe_url = ""
 

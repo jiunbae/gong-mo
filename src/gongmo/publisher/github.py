@@ -32,8 +32,8 @@ class GitHubPublisher:
                 now = datetime.now().strftime("%Y-%m-%d %H:%M")
                 message = f"Update IPO data - {now}"
 
-            # Git add
-            self._run_git("add", ".")
+            # Git add (명시적 파일만 추가하여 .env, credentials 등 유출 방지)
+            self._run_git("add", "docs/data.json", "docs/index.html", "docs/og-image.png")
 
             # Git commit
             self._run_git("commit", "-m", message)
