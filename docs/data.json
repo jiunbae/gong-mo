@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-02-14T18:31:53.780893",
+  "last_updated": "2026-02-21T18:31:57.718806",
   "total_count": 30,
   "items": [
     {
@@ -147,8 +147,8 @@
       "subscription_start": "2026-02-23",
       "subscription_end": "2026-02-24",
       "listing_date": "2026-03-09",
-      "offer_price_range": "10,100~11,500원",
-      "final_offer_price": null,
+      "offer_price_range": "11,500원",
+      "final_offer_price": 11500,
       "offer_price_min": 10100,
       "offer_price_max": 11500,
       "lead_underwriter": "미래에셋증권",
@@ -161,8 +161,8 @@
       "subscription_start": "2026-02-23",
       "subscription_end": "2026-02-24",
       "listing_date": "2026-03-06",
-      "offer_price_range": "7,000~8,500원",
-      "final_offer_price": null,
+      "offer_price_range": "8,500원",
+      "final_offer_price": 8500,
       "offer_price_min": 7000,
       "offer_price_max": 8500,
       "lead_underwriter": "한국투자증권",
