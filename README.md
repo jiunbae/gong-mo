@@ -2,6 +2,21 @@
 
 대한민국 공모주 청약 일정을 자동으로 수집하여 Google Calendar에 등록하고, 정적 웹사이트로 제공하는 봇입니다.
 
+## Quickstart for Agents
+
+<div><img src="https://quickstart-for-agents.vercel.app/api/header.svg?theme=claude-code&title=%EA%B3%B5%EB%AA%A8%EC%A3%BC%20%EC%BA%98%EB%A6%B0%EB%8D%94%20%EB%B4%87&lang=Agents&width=800&mascot=default&font=mono" width="100%" /></div>
+
+```
+Clone https://github.com/jiunbae/gong-mo and set up the project.
+Install Python dependencies from requirements.txt.
+Copy .env.example to .env and configure GOOGLE_CALENDAR_ID.
+Run a dry-run with `PYTHONPATH=src python -m gongmo.main --dry-run`
+to verify IPO data collection from 38커뮤니케이션.
+Generate the static site with `PYTHONPATH=src python -m gongmo.main --publish`.
+```
+
+<div><img src="https://quickstart-for-agents.vercel.app/api/footer.svg?theme=claude-code&model=Opus%204.6&project=gong-mo&font=mono" width="100%" /></div>
+
 ## 기능
 
 - 38커뮤니케이션에서 공모주 청약/상장 일정 자동 수집
