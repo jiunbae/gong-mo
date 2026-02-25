@@ -37,6 +37,10 @@ jobs:
       - name: Collect IPO data
         env:
           GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+          GOOGLE_ADSENSE_CLIENT_ID: ${{ secrets.GOOGLE_ADSENSE_CLIENT_ID }}
+          GOOGLE_ADSENSE_SLOT_TOP: ${{ secrets.GOOGLE_ADSENSE_SLOT_TOP }}
+          GOOGLE_ADSENSE_SLOT_BOTTOM: ${{ secrets.GOOGLE_ADSENSE_SLOT_BOTTOM }}
         run: |
           PYTHONPATH=src python -c "
           import sys

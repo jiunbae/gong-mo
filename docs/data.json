@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-02-21T18:31:57.718806",
+  "last_updated": "2026-02-25T21:28:44.751790",
   "total_count": 30,
   "items": [
     {
@@ -152,7 +152,7 @@
       "offer_price_min": 10100,
       "offer_price_max": 11500,
       "lead_underwriter": "미래에셋증권",
-      "institutional_competition": null,
+      "institutional_competition": 2711.06,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2268&l=&page=1"
     },
@@ -166,7 +166,7 @@
       "offer_price_min": 7000,
       "offer_price_max": 8500,
       "lead_underwriter": "한국투자증권",
-      "institutional_competition": null,
+      "institutional_competition": 1960.87,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2273&l=&page=1"
     },
@@ -180,7 +180,7 @@
       "offer_price_min": 8300,
       "offer_price_max": 9500,
       "lead_underwriter": "NH투자증권",
-      "institutional_competition": null,
+      "institutional_competition": 134.59,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2271&l=&page=1"
     },
