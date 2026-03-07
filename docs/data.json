@@ -1,7 +1,21 @@
 {
-  "last_updated": "2026-02-28T18:30:32.157995",
+  "last_updated": "2026-03-07T18:31:01.029502",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "채비",
+      "subscription_start": "2026-04-01",
+      "subscription_end": "2026-04-02",
+      "listing_date": null,
+      "offer_price_range": "12,300~15,300원",
+      "final_offer_price": null,
+      "offer_price_min": 12300,
+      "offer_price_max": 15300,
+      "lead_underwriter": null,
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2281&l=&page=1"
+    },
     {
       "company_name": "인벤테라",
       "subscription_start": "2026-03-23",
@@ -34,7 +48,7 @@
       "company_name": "리센스메디컬",
       "subscription_start": "2026-03-19",
       "subscription_end": "2026-03-20",
-      "listing_date": null,
+      "listing_date": "2026-03-31",
       "offer_price_range": "9,000~11,000원",
       "final_offer_price": null,
       "offer_price_min": 9000,
@@ -104,7 +118,7 @@
       "company_name": "한패스",
       "subscription_start": "2026-03-16",
       "subscription_end": "2026-03-17",
-      "listing_date": "2025-01-01",
+      "listing_date": "2026-03-25",
       "offer_price_range": "17,000~19,000원",
       "final_offer_price": null,
       "offer_price_min": 17000,
@@ -118,7 +132,7 @@
       "company_name": "아이엠바이오로직스",
       "subscription_start": "2026-03-11",
       "subscription_end": "2026-03-12",
-      "listing_date": "2025-09-30",
+      "listing_date": "2026-03-20",
       "offer_price_range": "19,000~26,000원",
       "final_offer_price": null,
       "offer_price_min": 19000,
@@ -132,13 +146,13 @@
       "company_name": "카나프테라퓨틱스",
       "subscription_start": "2026-03-05",
       "subscription_end": "2026-03-06",
-      "listing_date": "2026-03-17",
-      "offer_price_range": "16,000~20,000원",
-      "final_offer_price": null,
+      "listing_date": "2026-03-16",
+      "offer_price_range": "20,000원",
+      "final_offer_price": 20000,
       "offer_price_min": 16000,
       "offer_price_max": 20000,
       "lead_underwriter": "한국투자증권",
-      "institutional_competition": null,
+      "institutional_competition": 1899.29,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2269&l=&page=1"
     },
@@ -370,7 +384,7 @@
       "company_name": "티엠씨",
       "subscription_start": "2025-12-03",
       "subscription_end": "2025-12-04",
-      "listing_date": "2025-12-15",
+      "listing_date": "2025-01-01",
       "offer_price_range": "9,300원",
       "final_offer_price": 9300,
       "offer_price_min": 8000,
@@ -407,20 +421,6 @@
       "institutional_competition": 546.14,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2238&l=&page=1"
-    },
-    {
-      "company_name": "교보스팩19호",
-      "subscription_start": "2025-12-02",
-      "subscription_end": "2025-12-03",
-      "listing_date": "2025-12-12",
-      "offer_price_range": "2,000원",
-      "final_offer_price": 2000,
-      "offer_price_min": 2000,
-      "offer_price_max": 2000,
-      "lead_underwriter": "교보증권",
-      "institutional_competition": 115.0,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2259&l=&page=1"
     }
   ]
 }
