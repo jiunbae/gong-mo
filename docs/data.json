@@ -1,7 +1,35 @@
 {
-  "last_updated": "2026-03-21T18:33:37.661744",
+  "last_updated": "2026-03-28T18:38:24.421371",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "마키나락스",
+      "subscription_start": "2026-05-11",
+      "subscription_end": "2026-05-12",
+      "listing_date": null,
+      "offer_price_range": "12,500~15,000원",
+      "final_offer_price": null,
+      "offer_price_min": 12500,
+      "offer_price_max": 15000,
+      "lead_underwriter": "미래에셋증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2285&l=&page=1"
+    },
+    {
+      "company_name": "코스모로보틱스",
+      "subscription_start": "2026-04-27",
+      "subscription_end": "2026-04-28",
+      "listing_date": null,
+      "offer_price_range": "5,300~6,000원",
+      "final_offer_price": null,
+      "offer_price_min": 5300,
+      "offer_price_max": 6000,
+      "lead_underwriter": "유진투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2278&l=&page=1"
+    },
     {
       "company_name": "채비",
       "subscription_start": "2026-04-20",
@@ -15,6 +43,20 @@
       "institutional_competition": null,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2281&l=&page=1"
+    },
+    {
+      "company_name": "신한스팩18호",
+      "subscription_start": "2026-04-20",
+      "subscription_end": "2026-04-21",
+      "listing_date": null,
+      "offer_price_range": "2,000~2,000원",
+      "final_offer_price": null,
+      "offer_price_min": 2000,
+      "offer_price_max": 2000,
+      "lead_underwriter": "신한투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2284&l=&page=1"
     },
     {
       "company_name": "키움히어로스팩2호",
@@ -31,34 +73,6 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2282&l=&page=1"
     },
     {
-      "company_name": "코스모로보틱스",
-      "subscription_start": "2026-04-09",
-      "subscription_end": "2026-04-10",
-      "listing_date": null,
-      "offer_price_range": "5,300~6,000원",
-      "final_offer_price": null,
-      "offer_price_min": 5300,
-      "offer_price_max": 6000,
-      "lead_underwriter": "유진투자증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2278&l=&page=1"
-    },
-    {
-      "company_name": "하나오피스리츠",
-      "subscription_start": "2026-03-31",
-      "subscription_end": "2026-04-01",
-      "listing_date": "2026-04-17",
-      "offer_price_range": "5,000원",
-      "final_offer_price": 5000,
-      "offer_price_min": 5000,
-      "offer_price_max": 5000,
-      "lead_underwriter": "하나증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2283&l=&page=1"
-    },
-    {
       "company_name": "인벤테라",
       "subscription_start": "2026-03-23",
       "subscription_end": "2026-03-24",
@@ -68,7 +82,7 @@
       "offer_price_min": 12100,
       "offer_price_max": 16600,
       "lead_underwriter": "NH투자증권",
-      "institutional_competition": null,
+      "institutional_competition": 1913.0,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2275&l=&page=1"
     },
@@ -76,13 +90,13 @@
       "company_name": "교보스팩20호",
       "subscription_start": "2026-03-23",
       "subscription_end": "2026-03-24",
-      "listing_date": null,
+      "listing_date": "2026-04-02",
       "offer_price_range": "2,000원",
       "final_offer_price": 2000,
       "offer_price_min": 2000,
       "offer_price_max": 2000,
       "lead_underwriter": "교보증권",
-      "institutional_competition": null,
+      "institutional_competition": 747.0,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2279&l=&page=1"
     },
@@ -407,20 +421,6 @@
       "institutional_competition": 1130.32,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2247&l=&page=1"
-    },
-    {
-      "company_name": "티엠씨",
-      "subscription_start": "2025-12-03",
-      "subscription_end": "2025-12-04",
-      "listing_date": "2025-01-01",
-      "offer_price_range": "9,300원",
-      "final_offer_price": 9300,
-      "offer_price_min": 8000,
-      "offer_price_max": 9300,
-      "lead_underwriter": "미래에셋증권",
-      "institutional_competition": 1305.46,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2242&l=&page=1"
     }
   ]
 }
