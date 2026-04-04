@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-03-28T18:38:24.421371",
+  "last_updated": "2026-04-04T18:39:00.062475",
   "total_count": 30,
   "items": [
     {
       "company_name": "마키나락스",
       "subscription_start": "2026-05-11",
       "subscription_end": "2026-05-12",
-      "listing_date": null,
+      "listing_date": "2025-01-01",
       "offer_price_range": "12,500~15,000원",
       "final_offer_price": null,
       "offer_price_min": 12500,
@@ -15,6 +15,20 @@
       "institutional_competition": null,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2285&l=&page=1"
+    },
+    {
+      "company_name": "폴레드",
+      "subscription_start": "2026-05-04",
+      "subscription_end": "2026-05-06",
+      "listing_date": null,
+      "offer_price_range": "4,100~5,000원",
+      "final_offer_price": null,
+      "offer_price_min": 4100,
+      "offer_price_max": 5000,
+      "lead_underwriter": "NH투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2286&l=&page=1"
     },
     {
       "company_name": "코스모로보틱스",
@@ -34,7 +48,7 @@
       "company_name": "채비",
       "subscription_start": "2026-04-20",
       "subscription_end": "2026-04-21",
-      "listing_date": null,
+      "listing_date": "2025-01-01",
       "offer_price_range": "12,300~15,300원",
       "final_offer_price": null,
       "offer_price_min": 12300,
@@ -407,20 +421,6 @@
       "institutional_competition": 194.0,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2257&l=&page=1"
-    },
-    {
-      "company_name": "아크릴",
-      "subscription_start": "2025-12-04",
-      "subscription_end": "2025-12-05",
-      "listing_date": "2025-01-01",
-      "offer_price_range": "19,500원",
-      "final_offer_price": 19500,
-      "offer_price_min": 17500,
-      "offer_price_max": 19500,
-      "lead_underwriter": "신한투자증권",
-      "institutional_competition": 1130.32,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2247&l=&page=1"
     }
   ]
 }
