@@ -1,7 +1,21 @@
 {
-  "last_updated": "2026-04-18T18:45:42.241321",
+  "last_updated": "2026-04-25T18:48:29.306132",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "스트라드비젼",
+      "subscription_start": "2026-06-17",
+      "subscription_end": "2026-06-18",
+      "listing_date": null,
+      "offer_price_range": "12,400~14,800원",
+      "final_offer_price": null,
+      "offer_price_min": 12400,
+      "offer_price_max": 14800,
+      "lead_underwriter": "KB증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2289&l=&page=1"
+    },
     {
       "company_name": "매드업",
       "subscription_start": "2026-06-01",
@@ -45,6 +59,20 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2291&l=&page=1"
     },
     {
+      "company_name": "대신밸런스스팩20호",
+      "subscription_start": "2026-05-22",
+      "subscription_end": "2026-05-26",
+      "listing_date": null,
+      "offer_price_range": "2,000~2,000원",
+      "final_offer_price": null,
+      "offer_price_min": 2000,
+      "offer_price_max": 2000,
+      "lead_underwriter": "대신증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2288&l=&page=1"
+    },
+    {
       "company_name": "피스피스스튜디오",
       "subscription_start": "2026-05-20",
       "subscription_end": "2026-05-21",
@@ -59,20 +87,6 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2287&l=&page=1"
     },
     {
-      "company_name": "대신밸런스스팩20호",
-      "subscription_start": "2026-05-12",
-      "subscription_end": "2026-05-13",
-      "listing_date": null,
-      "offer_price_range": "2,000~2,000원",
-      "final_offer_price": null,
-      "offer_price_min": 2000,
-      "offer_price_max": 2000,
-      "lead_underwriter": "대신증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2288&l=&page=1"
-    },
-    {
       "company_name": "마키나락스",
       "subscription_start": "2026-05-11",
       "subscription_end": "2026-05-12",
@@ -85,20 +99,6 @@
       "institutional_competition": null,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2285&l=&page=1"
-    },
-    {
-      "company_name": "스트라드비젼",
-      "subscription_start": "2026-05-11",
-      "subscription_end": "2026-05-12",
-      "listing_date": null,
-      "offer_price_range": "12,400~14,800원",
-      "final_offer_price": null,
-      "offer_price_min": 12400,
-      "offer_price_max": 14800,
-      "lead_underwriter": "KB증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2289&l=&page=1"
     },
     {
       "company_name": "폴레드",
@@ -119,8 +119,8 @@
       "subscription_start": "2026-04-27",
       "subscription_end": "2026-04-28",
       "listing_date": null,
-      "offer_price_range": "5,300~6,000원",
-      "final_offer_price": null,
+      "offer_price_range": "6,000원",
+      "final_offer_price": 6000,
       "offer_price_min": 5300,
       "offer_price_max": 6000,
       "lead_underwriter": "유진투자증권",
