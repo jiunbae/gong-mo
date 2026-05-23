@@ -1,7 +1,35 @@
 {
-  "last_updated": "2026-05-16T19:01:31.157196",
+  "last_updated": "2026-05-23T19:06:00.847808",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "레메디",
+      "subscription_start": "2026-07-01",
+      "subscription_end": "2026-07-02",
+      "listing_date": null,
+      "offer_price_range": "17,800~20,700원",
+      "final_offer_price": null,
+      "offer_price_min": 17800,
+      "offer_price_max": 20700,
+      "lead_underwriter": "KB증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2296&l=&page=1"
+    },
+    {
+      "company_name": "매드업",
+      "subscription_start": "2026-06-23",
+      "subscription_end": "2026-06-24",
+      "listing_date": null,
+      "offer_price_range": "7,000~8,000원",
+      "final_offer_price": null,
+      "offer_price_min": 7000,
+      "offer_price_max": 8000,
+      "lead_underwriter": "미래에셋증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2290&l=&page=1"
+    },
     {
       "company_name": "빅웨이브로보틱스",
       "subscription_start": "2026-06-18",
@@ -18,13 +46,13 @@
     },
     {
       "company_name": "스트라드비젼",
-      "subscription_start": "2026-06-17",
-      "subscription_end": "2026-06-18",
+      "subscription_start": "2026-06-18",
+      "subscription_end": "2026-06-19",
       "listing_date": null,
-      "offer_price_range": "12,400~14,800원",
+      "offer_price_range": "12,000~14,000원",
       "final_offer_price": null,
-      "offer_price_min": 12400,
-      "offer_price_max": 14800,
+      "offer_price_min": 12000,
+      "offer_price_max": 14000,
       "lead_underwriter": "KB증권",
       "institutional_competition": null,
       "source": "38커뮤니케이션",
@@ -32,8 +60,8 @@
     },
     {
       "company_name": "져스텍",
-      "subscription_start": "2026-06-11",
-      "subscription_end": "2026-06-12",
+      "subscription_start": "2026-06-18",
+      "subscription_end": "2026-06-19",
       "listing_date": "2025-01-01",
       "offer_price_range": "10,500~12,500원",
       "final_offer_price": null,
@@ -73,20 +101,6 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2295&l=&page=1"
     },
     {
-      "company_name": "매드업",
-      "subscription_start": "2026-06-01",
-      "subscription_end": "2026-06-02",
-      "listing_date": null,
-      "offer_price_range": "7,000~8,000원",
-      "final_offer_price": null,
-      "offer_price_min": 7000,
-      "offer_price_max": 8000,
-      "lead_underwriter": "미래에셋증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2290&l=&page=1"
-    },
-    {
       "company_name": "피스피스스튜디오",
       "subscription_start": "2026-05-26",
       "subscription_end": "2026-05-27",
@@ -104,9 +118,9 @@
       "company_name": "대신밸런스스팩20호",
       "subscription_start": "2026-05-22",
       "subscription_end": "2026-05-26",
-      "listing_date": null,
-      "offer_price_range": "2,000~2,000원",
-      "final_offer_price": null,
+      "listing_date": "2026-06-05",
+      "offer_price_range": "2,000원",
+      "final_offer_price": 2000,
       "offer_price_min": 2000,
       "offer_price_max": 2000,
       "lead_underwriter": "대신증권",
@@ -407,20 +421,6 @@
       "institutional_competition": 967.6,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2255&l=&page=1"
-    },
-    {
-      "company_name": "리브스메드",
-      "subscription_start": "2025-12-15",
-      "subscription_end": "2025-12-16",
-      "listing_date": "2025-12-24",
-      "offer_price_range": "55,000원",
-      "final_offer_price": 55000,
-      "offer_price_min": 44000,
-      "offer_price_max": 55000,
-      "lead_underwriter": "삼성증권",
-      "institutional_competition": 390.0,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2248&l=&page=1"
     }
   ]
 }
