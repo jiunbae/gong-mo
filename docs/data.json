@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-23T19:06:00.847808",
+  "last_updated": "2026-05-30T19:09:43.175740",
   "total_count": 30,
   "items": [
     {
@@ -17,6 +17,20 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2296&l=&page=1"
     },
     {
+      "company_name": "레몬헬스케어",
+      "subscription_start": "2026-06-24",
+      "subscription_end": "2026-06-25",
+      "listing_date": null,
+      "offer_price_range": "7,500~10,000원",
+      "final_offer_price": null,
+      "offer_price_min": 7500,
+      "offer_price_max": 10000,
+      "lead_underwriter": "KB증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2293&l=&page=1"
+    },
+    {
       "company_name": "매드업",
       "subscription_start": "2026-06-23",
       "subscription_end": "2026-06-24",
@@ -31,9 +45,23 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2290&l=&page=1"
     },
     {
+      "company_name": "한국스팩16호",
+      "subscription_start": "2026-06-22",
+      "subscription_end": "2026-06-23",
+      "listing_date": null,
+      "offer_price_range": "2,000~2,000원",
+      "final_offer_price": null,
+      "offer_price_min": 2000,
+      "offer_price_max": 2000,
+      "lead_underwriter": "한국투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2297&l=&page=1"
+    },
+    {
       "company_name": "빅웨이브로보틱스",
-      "subscription_start": "2026-06-18",
-      "subscription_end": "2026-06-19",
+      "subscription_start": "2026-06-19",
+      "subscription_end": "2026-06-22",
       "listing_date": null,
       "offer_price_range": "22,000~27,000원",
       "final_offer_price": null,
@@ -73,20 +101,6 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2291&l=&page=1"
     },
     {
-      "company_name": "레몬헬스케어",
-      "subscription_start": "2026-06-09",
-      "subscription_end": "2026-06-10",
-      "listing_date": null,
-      "offer_price_range": "7,500~10,000원",
-      "final_offer_price": null,
-      "offer_price_min": 7500,
-      "offer_price_max": 10000,
-      "lead_underwriter": "KB증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2293&l=&page=1"
-    },
-    {
       "company_name": "메리츠스팩2호",
       "subscription_start": "2026-06-09",
       "subscription_end": "2026-06-10",
@@ -104,13 +118,13 @@
       "company_name": "피스피스스튜디오",
       "subscription_start": "2026-05-26",
       "subscription_end": "2026-05-27",
-      "listing_date": "2026-06-05",
-      "offer_price_range": "19,000~21,500원",
-      "final_offer_price": null,
+      "listing_date": "2026-06-08",
+      "offer_price_range": "21,500원",
+      "final_offer_price": 21500,
       "offer_price_min": 19000,
       "offer_price_max": 21500,
       "lead_underwriter": "NH투자증권",
-      "institutional_competition": null,
+      "institutional_competition": 1194.94,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2287&l=&page=1"
     },
@@ -124,7 +138,7 @@
       "offer_price_min": 2000,
       "offer_price_max": 2000,
       "lead_underwriter": "대신증권",
-      "institutional_competition": null,
+      "institutional_competition": 1468.88,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2288&l=&page=1"
     },
@@ -407,20 +421,6 @@
       "institutional_competition": 1870.38,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2266&l=&page=1"
-    },
-    {
-      "company_name": "세미파이브",
-      "subscription_start": "2025-12-18",
-      "subscription_end": "2025-12-19",
-      "listing_date": "2025-01-01",
-      "offer_price_range": "24,000원",
-      "final_offer_price": 24000,
-      "offer_price_min": 21000,
-      "offer_price_max": 24000,
-      "lead_underwriter": "삼성증권",
-      "institutional_competition": 967.6,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2255&l=&page=1"
     }
   ]
 }
