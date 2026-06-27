@@ -1,7 +1,35 @@
 {
-  "last_updated": "2026-06-20T19:21:57.420617",
+  "last_updated": "2026-06-27T19:17:02.539972",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "니어스랩",
+      "subscription_start": "2026-08-05",
+      "subscription_end": "2026-08-06",
+      "listing_date": null,
+      "offer_price_range": "30,000~41,200원",
+      "final_offer_price": null,
+      "offer_price_min": 30000,
+      "offer_price_max": 41200,
+      "lead_underwriter": null,
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2303&l=&page=1"
+    },
+    {
+      "company_name": "딜리셔스",
+      "subscription_start": "2026-08-03",
+      "subscription_end": "2026-08-04",
+      "listing_date": null,
+      "offer_price_range": "5,000~7,000원",
+      "final_offer_price": null,
+      "offer_price_min": 5000,
+      "offer_price_max": 7000,
+      "lead_underwriter": "한국투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2302&l=&page=1"
+    },
     {
       "company_name": "케이앤에스아이앤씨",
       "subscription_start": "2026-07-27",
@@ -49,8 +77,8 @@
       "subscription_start": "2026-07-01",
       "subscription_end": "2026-07-02",
       "listing_date": "2026-07-13",
-      "offer_price_range": "17,800~20,700원",
-      "final_offer_price": null,
+      "offer_price_range": "20,700원",
+      "final_offer_price": 20700,
       "offer_price_min": 17800,
       "offer_price_max": 20700,
       "lead_underwriter": "KB증권",
@@ -63,12 +91,12 @@
       "subscription_start": "2026-06-24",
       "subscription_end": "2026-06-25",
       "listing_date": "2026-07-06",
-      "offer_price_range": "7,500~10,000원",
-      "final_offer_price": null,
+      "offer_price_range": "10,000원",
+      "final_offer_price": 10000,
       "offer_price_min": 7500,
       "offer_price_max": 10000,
       "lead_underwriter": "KB증권",
-      "institutional_competition": null,
+      "institutional_competition": 1510.57,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2293&l=&page=1"
     },
@@ -77,12 +105,12 @@
       "subscription_start": "2026-06-23",
       "subscription_end": "2026-06-24",
       "listing_date": "2026-07-01",
-      "offer_price_range": "7,000~8,000원",
-      "final_offer_price": null,
+      "offer_price_range": "8,000원",
+      "final_offer_price": 8000,
       "offer_price_min": 7000,
       "offer_price_max": 8000,
       "lead_underwriter": "미래에셋증권",
-      "institutional_competition": null,
+      "institutional_competition": 3304.76,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2290&l=&page=1"
     },
@@ -96,7 +124,7 @@
       "offer_price_min": 2000,
       "offer_price_max": 2000,
       "lead_underwriter": "한국투자증권",
-      "institutional_competition": null,
+      "institutional_competition": 1274.77,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2297&l=&page=1"
     },
@@ -393,34 +421,6 @@
       "institutional_competition": 1899.29,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2269&l=&page=1"
-    },
-    {
-      "company_name": "액스비스",
-      "subscription_start": "2026-02-23",
-      "subscription_end": "2026-02-24",
-      "listing_date": "2026-03-09",
-      "offer_price_range": "11,500원",
-      "final_offer_price": 11500,
-      "offer_price_min": 10100,
-      "offer_price_max": 11500,
-      "lead_underwriter": "미래에셋증권",
-      "institutional_competition": 2711.06,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2268&l=&page=1"
-    },
-    {
-      "company_name": "에스팀",
-      "subscription_start": "2026-02-23",
-      "subscription_end": "2026-02-24",
-      "listing_date": "2025-01-01",
-      "offer_price_range": "8,500원",
-      "final_offer_price": 8500,
-      "offer_price_min": 7000,
-      "offer_price_max": 8500,
-      "lead_underwriter": "한국투자증권",
-      "institutional_competition": 1960.87,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2273&l=&page=1"
     }
   ]
 }
