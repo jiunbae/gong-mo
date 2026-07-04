@@ -1,7 +1,49 @@
 {
-  "last_updated": "2026-06-27T19:17:02.539972",
+  "last_updated": "2026-07-04T19:07:19.371465",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "기도산업",
+      "subscription_start": "2026-08-11",
+      "subscription_end": "2026-08-12",
+      "listing_date": null,
+      "offer_price_range": "24,800~28,400원",
+      "final_offer_price": null,
+      "offer_price_min": 24800,
+      "offer_price_max": 28400,
+      "lead_underwriter": "미래에셋증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2305&l=&page=1"
+    },
+    {
+      "company_name": "해치텍",
+      "subscription_start": "2026-08-06",
+      "subscription_end": "2026-08-07",
+      "listing_date": null,
+      "offer_price_range": "23,000~28,000원",
+      "final_offer_price": null,
+      "offer_price_min": 23000,
+      "offer_price_max": 28000,
+      "lead_underwriter": "DB증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2304&l=&page=1"
+    },
+    {
+      "company_name": "빅웨이브로보틱스",
+      "subscription_start": "2026-08-05",
+      "subscription_end": "2026-08-06",
+      "listing_date": null,
+      "offer_price_range": "20,000~24,000원",
+      "final_offer_price": null,
+      "offer_price_min": 20000,
+      "offer_price_max": 24000,
+      "lead_underwriter": "유진투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2294&l=&page=1"
+    },
     {
       "company_name": "니어스랩",
       "subscription_start": "2026-08-05",
@@ -11,7 +53,7 @@
       "final_offer_price": null,
       "offer_price_min": 30000,
       "offer_price_max": 41200,
-      "lead_underwriter": null,
+      "lead_underwriter": "삼성증권",
       "institutional_competition": null,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2303&l=&page=1"
@@ -62,7 +104,7 @@
       "company_name": "에이치엘지노믹스",
       "subscription_start": "2026-07-13",
       "subscription_end": "2026-07-14",
-      "listing_date": null,
+      "listing_date": "2026-07-24",
       "offer_price_range": "18,500~21,500원",
       "final_offer_price": null,
       "offer_price_min": 18500,
@@ -82,7 +124,7 @@
       "offer_price_min": 17800,
       "offer_price_max": 20700,
       "lead_underwriter": "KB증권",
-      "institutional_competition": null,
+      "institutional_competition": 1706.71,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2296&l=&page=1"
     },
@@ -127,20 +169,6 @@
       "institutional_competition": 1274.77,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2297&l=&page=1"
-    },
-    {
-      "company_name": "빅웨이브로보틱스",
-      "subscription_start": "2026-06-19",
-      "subscription_end": "2026-06-22",
-      "listing_date": null,
-      "offer_price_range": "22,000~27,000원",
-      "final_offer_price": null,
-      "offer_price_min": 22000,
-      "offer_price_max": 27000,
-      "lead_underwriter": "유진투자증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2294&l=&page=1"
     },
     {
       "company_name": "스트라드비젼",
@@ -393,34 +421,6 @@
       "institutional_competition": 1673.04,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2276&l=&page=1"
-    },
-    {
-      "company_name": "아이엠바이오로직스",
-      "subscription_start": "2026-03-11",
-      "subscription_end": "2026-03-12",
-      "listing_date": "2025-09-30",
-      "offer_price_range": "26,000원",
-      "final_offer_price": 26000,
-      "offer_price_min": 19000,
-      "offer_price_max": 26000,
-      "lead_underwriter": "한국투자증권",
-      "institutional_competition": 1806.0,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2272&l=&page=1"
-    },
-    {
-      "company_name": "카나프테라퓨틱스",
-      "subscription_start": "2026-03-05",
-      "subscription_end": "2026-03-06",
-      "listing_date": "2025-01-01",
-      "offer_price_range": "20,000원",
-      "final_offer_price": 20000,
-      "offer_price_min": 16000,
-      "offer_price_max": 20000,
-      "lead_underwriter": "한국투자증권",
-      "institutional_competition": 1899.29,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2269&l=&page=1"
     }
   ]
 }
