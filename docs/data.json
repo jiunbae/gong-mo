@@ -1,7 +1,21 @@
 {
-  "last_updated": "2026-07-04T19:07:19.371465",
+  "last_updated": "2026-07-11T18:58:39.788903",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "스카이랩스",
+      "subscription_start": "2026-08-13",
+      "subscription_end": "2026-08-14",
+      "listing_date": null,
+      "offer_price_range": "13,000~16,000원",
+      "final_offer_price": null,
+      "offer_price_min": 13000,
+      "offer_price_max": 16000,
+      "lead_underwriter": "한국투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2306&l=&page=1"
+    },
     {
       "company_name": "기도산업",
       "subscription_start": "2026-08-11",
@@ -59,6 +73,20 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2303&l=&page=1"
     },
     {
+      "company_name": "케이앤에스아이앤씨",
+      "subscription_start": "2026-08-04",
+      "subscription_end": "2026-08-05",
+      "listing_date": null,
+      "offer_price_range": "9,000~9,000원",
+      "final_offer_price": null,
+      "offer_price_min": 9000,
+      "offer_price_max": 9000,
+      "lead_underwriter": "IBK투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2299&l=&page=1"
+    },
+    {
       "company_name": "딜리셔스",
       "subscription_start": "2026-08-03",
       "subscription_end": "2026-08-04",
@@ -73,24 +101,10 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2302&l=&page=1"
     },
     {
-      "company_name": "케이앤에스아이앤씨",
-      "subscription_start": "2026-07-27",
-      "subscription_end": "2026-07-28",
-      "listing_date": null,
-      "offer_price_range": "9,000~9,000원",
-      "final_offer_price": null,
-      "offer_price_min": 9000,
-      "offer_price_max": 9000,
-      "lead_underwriter": "IBK투자증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2299&l=&page=1"
-    },
-    {
       "company_name": "인제니아테라퓨틱스",
       "subscription_start": "2026-07-23",
       "subscription_end": "2026-07-24",
-      "listing_date": null,
+      "listing_date": "2026-01-01",
       "offer_price_range": "12,000~14,500원",
       "final_offer_price": null,
       "offer_price_min": 12000,
@@ -105,8 +119,8 @@
       "subscription_start": "2026-07-13",
       "subscription_end": "2026-07-14",
       "listing_date": "2026-07-24",
-      "offer_price_range": "18,500~21,500원",
-      "final_offer_price": null,
+      "offer_price_range": "21,500원",
+      "final_offer_price": 21500,
       "offer_price_min": 18500,
       "offer_price_max": 21500,
       "lead_underwriter": "KB증권",
@@ -407,20 +421,6 @@
       "institutional_competition": 2428.25,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2274&l=&page=1"
-    },
-    {
-      "company_name": "한패스",
-      "subscription_start": "2026-03-16",
-      "subscription_end": "2026-03-17",
-      "listing_date": "2025-01-01",
-      "offer_price_range": "19,000원",
-      "final_offer_price": 19000,
-      "offer_price_min": 17000,
-      "offer_price_max": 19000,
-      "lead_underwriter": "한국투자증권",
-      "institutional_competition": 1673.04,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2276&l=&page=1"
     }
   ]
 }
