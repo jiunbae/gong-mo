@@ -1,7 +1,21 @@
 {
-  "last_updated": "2026-07-11T18:58:39.788903",
+  "last_updated": "2026-07-18T18:59:55.795489",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "브릴스",
+      "subscription_start": "2026-08-25",
+      "subscription_end": "2026-08-26",
+      "listing_date": null,
+      "offer_price_range": "16,500~19,500원",
+      "final_offer_price": null,
+      "offer_price_min": 16500,
+      "offer_price_max": 19500,
+      "lead_underwriter": "IBK투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2307&l=&page=1"
+    },
     {
       "company_name": "스카이랩스",
       "subscription_start": "2026-08-13",
@@ -15,6 +29,34 @@
       "institutional_competition": null,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2306&l=&page=1"
+    },
+    {
+      "company_name": "니어스랩",
+      "subscription_start": "2026-08-12",
+      "subscription_end": "2026-08-13",
+      "listing_date": null,
+      "offer_price_range": "30,000~41,200원",
+      "final_offer_price": null,
+      "offer_price_min": 30000,
+      "offer_price_max": 41200,
+      "lead_underwriter": "삼성증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2303&l=&page=1"
+    },
+    {
+      "company_name": "해치텍",
+      "subscription_start": "2026-08-12",
+      "subscription_end": "2026-08-13",
+      "listing_date": "2026-01-01",
+      "offer_price_range": "23,000~28,000원",
+      "final_offer_price": null,
+      "offer_price_min": 23000,
+      "offer_price_max": 28000,
+      "lead_underwriter": "DB증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2304&l=&page=1"
     },
     {
       "company_name": "기도산업",
@@ -31,20 +73,6 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2305&l=&page=1"
     },
     {
-      "company_name": "해치텍",
-      "subscription_start": "2026-08-06",
-      "subscription_end": "2026-08-07",
-      "listing_date": null,
-      "offer_price_range": "23,000~28,000원",
-      "final_offer_price": null,
-      "offer_price_min": 23000,
-      "offer_price_max": 28000,
-      "lead_underwriter": "DB증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2304&l=&page=1"
-    },
-    {
       "company_name": "빅웨이브로보틱스",
       "subscription_start": "2026-08-05",
       "subscription_end": "2026-08-06",
@@ -59,24 +87,10 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2294&l=&page=1"
     },
     {
-      "company_name": "니어스랩",
-      "subscription_start": "2026-08-05",
-      "subscription_end": "2026-08-06",
-      "listing_date": null,
-      "offer_price_range": "30,000~41,200원",
-      "final_offer_price": null,
-      "offer_price_min": 30000,
-      "offer_price_max": 41200,
-      "lead_underwriter": "삼성증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2303&l=&page=1"
-    },
-    {
       "company_name": "케이앤에스아이앤씨",
       "subscription_start": "2026-08-04",
       "subscription_end": "2026-08-05",
-      "listing_date": null,
+      "listing_date": "2026-08-13",
       "offer_price_range": "9,000~9,000원",
       "final_offer_price": null,
       "offer_price_min": 9000,
@@ -102,8 +116,8 @@
     },
     {
       "company_name": "인제니아테라퓨틱스",
-      "subscription_start": "2026-07-23",
-      "subscription_end": "2026-07-24",
+      "subscription_start": "2026-07-30",
+      "subscription_end": "2026-07-31",
       "listing_date": "2026-01-01",
       "offer_price_range": "12,000~14,500원",
       "final_offer_price": null,
@@ -124,7 +138,7 @@
       "offer_price_min": 18500,
       "offer_price_max": 21500,
       "lead_underwriter": "KB증권",
-      "institutional_competition": null,
+      "institutional_competition": 666.78,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2301&l=&page=1"
     },
@@ -407,20 +421,6 @@
       "institutional_competition": 569.27,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2277&l=&page=1"
-    },
-    {
-      "company_name": "메쥬",
-      "subscription_start": "2026-03-16",
-      "subscription_end": "2026-03-17",
-      "listing_date": "2025-01-01",
-      "offer_price_range": "21,600원",
-      "final_offer_price": 21600,
-      "offer_price_min": 16700,
-      "offer_price_max": 21600,
-      "lead_underwriter": "신한투자증권",
-      "institutional_competition": 2428.25,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2274&l=&page=1"
     }
   ]
 }
