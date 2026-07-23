@@ -13,7 +13,7 @@ from .collectors.site38 import Site38Collector
 from .calendar.client import GoogleCalendarClient, SyncAction
 from .calendar.auth import GoogleCalendarAuth
 from .models.ipo import IPOSchedule
-from .config import settings, CREDENTIALS_PATH, BASE_DIR
+from .config import settings, BASE_DIR
 from .publisher.static import StaticSiteGenerator
 from .publisher.github import GitHubPublisher
 
@@ -96,12 +96,14 @@ class IPOCalendarBot:
             self._print_summary(stats)
 
         except FileNotFoundError as e:
-            logger.error(f"\n인증 파일 오류: {e}")
+            logger.error(f"\n인증 오류: {e}")
             logger.info("\n설정 방법:")
-            logger.info("1. Google Cloud Console에서 프로젝트 생성")
-            logger.info("2. Calendar API 활성화")
-            logger.info("3. OAuth 2.0 자격 증명 생성")
-            logger.info(f"4. credentials.json 파일을 {CREDENTIALS_PATH}에 저장")
+            logger.info("1. Google Cloud Console에서 프로젝트 생성 및 Calendar API 활성화")
+            logger.info("2. 서비스 계정 생성 후 JSON 키 발급")
+            logger.info(
+                "3. GOOGLE_SERVICE_ACCOUNT_KEY(또는 _FILE) 환경변수 설정"
+            )
+            logger.info("4. 대상 캘린더를 서비스 계정 이메일과 공유")
             stats["errors"] += 1
 
         except Exception as e:

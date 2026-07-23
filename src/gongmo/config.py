@@ -2,7 +2,6 @@
 설정 관리 모듈
 """
 
-import os
 from pathlib import Path
 from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
@@ -13,8 +12,6 @@ load_dotenv()
 # 기본 경로 설정
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 DATA_DIR = BASE_DIR / "data"
-CREDENTIALS_PATH = BASE_DIR / "credentials.json"
-TOKEN_PATH = BASE_DIR / "token.json"
 
 
 class Settings(BaseSettings):

@@ -1,13 +1,9 @@
 """
 Google Calendar API 인증 모듈
 
-지원하는 인증 방식:
-1. Service Account (CI/CD 환경 권장)
-   - GOOGLE_SERVICE_ACCOUNT_KEY 환경변수: JSON 키 문자열
-   - GOOGLE_SERVICE_ACCOUNT_FILE 환경변수: JSON 키 파일 경로
-
-2. OAuth 2.0 (로컬 개발용)
-   - credentials.json + token.json 파일 사용
+인증 방식: Service Account
+  - GOOGLE_SERVICE_ACCOUNT_KEY 환경변수: JSON 키 문자열 (CI/CD 권장)
+  - GOOGLE_SERVICE_ACCOUNT_FILE 환경변수: JSON 키 파일 경로 (로컬)
 """
 
 import json
@@ -16,13 +12,8 @@ import os
 from pathlib import Path
 from typing import Optional
 
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
 from google.oauth2 import service_account
-from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build, Resource
-
-from ..config import CREDENTIALS_PATH, TOKEN_PATH
 
 logger = logging.getLogger(__name__)
 
@@ -66,97 +57,38 @@ def get_service_account_credentials() -> Optional[service_account.Credentials]:
 
     return None
 
+
 # 싱글톤 서비스 인스턴스
 _calendar_service: Optional[Resource] = None
 
+# 서비스 계정 미설정 시 안내 메시지
+_MISSING_SA_MESSAGE = (
+    "Google Calendar 인증에 필요한 Service Account 자격 증명을 찾을 수 없습니다.\n"
+    "다음 중 하나를 설정하세요:\n"
+    "  - GOOGLE_SERVICE_ACCOUNT_KEY: 서비스 계정 JSON 키 문자열 (CI/CD 권장)\n"
+    "  - GOOGLE_SERVICE_ACCOUNT_FILE: 서비스 계정 JSON 키 파일 경로 (로컬)\n"
+    "설정 방법: Google Cloud Console에서 서비스 계정을 만들고 JSON 키를 발급받은 뒤,\n"
+    "대상 캘린더를 해당 서비스 계정 이메일과 공유하세요."
+)
+
 
 class GoogleCalendarAuth:
-    """Google Calendar 인증 관리 클래스"""
+    """Google Calendar 인증 관리 클래스 (Service Account 전용)"""
 
-    def __init__(
-        self,
-        credentials_path: Path = CREDENTIALS_PATH,
-        token_path: Path = TOKEN_PATH,
-    ):
-        self.credentials_path = Path(credentials_path)
-        self.token_path = Path(token_path)
+    def __init__(self):
         self._service: Optional[Resource] = None
 
-    def authenticate(self) -> Credentials:
+    def authenticate(self) -> service_account.Credentials:
         """
-        인증 수행 및 자격 증명 반환
+        Service Account 자격 증명을 반환합니다.
 
-        우선순위:
-        1. Service Account (환경 변수)
-        2. OAuth 토큰 파일 (token.json)
-        3. 새 OAuth 인증 (credentials.json 필요)
+        Raises:
+            FileNotFoundError: 서비스 계정 자격 증명이 설정되지 않은 경우
         """
-        # Service Account 우선 확인 (CI/CD 환경)
-        sa_creds = get_service_account_credentials()
-        if sa_creds:
-            return sa_creds
-
-        creds = None
-
-        # 기존 토큰 확인
-        if self.token_path.exists():
-            try:
-                creds = Credentials.from_authorized_user_file(
-                    str(self.token_path), SCOPES
-                )
-                logger.debug("기존 토큰 로드 성공")
-            except Exception as e:
-                logger.warning(f"토큰 로드 실패: {e}")
-                creds = None
-
-        # 유효하지 않은 경우 갱신 또는 새로 인증
-        if not creds or not creds.valid:
-            if creds and creds.expired and creds.refresh_token:
-                # 토큰 갱신
-                try:
-                    creds.refresh(Request())
-                    logger.info("토큰 갱신 성공")
-                except Exception as e:
-                    logger.warning(f"토큰 갱신 실패, 재인증 필요: {e}")
-                    creds = None
-
-            if not creds:
-                # 새로운 인증 플로우 시작
-                if not self.credentials_path.exists():
-                    raise FileNotFoundError(
-                        f"credentials.json 파일을 찾을 수 없습니다: {self.credentials_path}\n"
-                        "Google Cloud Console에서 OAuth 자격 증명을 다운로드하세요.\n"
-                        "설정 방법: https://developers.google.com/calendar/api/quickstart/python"
-                    )
-
-                logger.info("새로운 인증 시작...")
-                flow = InstalledAppFlow.from_client_secrets_file(
-                    str(self.credentials_path), SCOPES
-                )
-                creds = flow.run_local_server(
-                    port=54321,
-                    prompt="consent",
-                    success_message="인증 성공! 이 창을 닫아도 됩니다.",
-                    open_browser=True,
-                )
-                logger.info("새 인증 완료")
-
-            # 토큰 저장
-            self._save_token(creds)
-
+        creds = get_service_account_credentials()
+        if creds is None:
+            raise FileNotFoundError(_MISSING_SA_MESSAGE)
         return creds
-
-    def _save_token(self, creds: Credentials) -> None:
-        """토큰을 파일에 저장"""
-        try:
-            # 상위 디렉토리 생성
-            self.token_path.parent.mkdir(parents=True, exist_ok=True)
-
-            with open(self.token_path, "w") as token:
-                token.write(creds.to_json())
-            logger.debug(f"토큰 저장됨: {self.token_path}")
-        except Exception as e:
-            logger.error(f"토큰 저장 실패: {e}")
 
     def get_service(self) -> Resource:
         """Google Calendar API 서비스 객체 반환"""
@@ -166,29 +98,9 @@ class GoogleCalendarAuth:
             logger.info("Google Calendar 서비스 초기화 완료")
         return self._service
 
-    def revoke_token(self) -> bool:
-        """토큰 취소 (로그아웃)"""
-        if self.token_path.exists():
-            self.token_path.unlink()
-            self._service = None
-            logger.info("토큰 삭제됨")
-            return True
-        return False
-
     def is_authenticated(self) -> bool:
-        """인증 상태 확인"""
-        # Service Account가 설정되어 있으면 True
-        if get_service_account_credentials():
-            return True
-
-        if not self.token_path.exists():
-            return False
-
-        try:
-            creds = Credentials.from_authorized_user_file(str(self.token_path), SCOPES)
-            return creds.valid or (creds.expired and creds.refresh_token)
-        except Exception:
-            return False
+        """인증 상태 확인 (서비스 계정 설정 여부)"""
+        return get_service_account_credentials() is not None
 
 
 def get_calendar_service() -> Resource:

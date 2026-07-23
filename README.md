@@ -41,10 +41,15 @@ pip install -r requirements.txt
 
 ## Google Calendar API 설정
 
+인증은 **서비스 계정(Service Account)** 방식만 사용합니다.
+
 1. [Google Cloud Console](https://console.cloud.google.com)에서 프로젝트 생성
 2. Calendar API 활성화
-3. OAuth 2.0 클라이언트 ID 생성 (데스크톱 앱)
-4. `credentials.json` 다운로드 후 프로젝트 루트에 저장
+3. 서비스 계정 생성 후 JSON 키 발급
+4. 자격 증명을 환경변수로 설정
+   - CI/CD: `GOOGLE_SERVICE_ACCOUNT_KEY` = JSON 키 문자열
+   - 로컬: `GOOGLE_SERVICE_ACCOUNT_FILE` = JSON 키 파일 경로
+5. 대상 캘린더(`GOOGLE_CALENDAR_ID`)를 서비스 계정 이메일과 공유
 
 ## 사용법
 
