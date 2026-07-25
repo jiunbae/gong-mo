@@ -1,7 +1,35 @@
 {
-  "last_updated": "2026-07-18T18:59:55.795489",
+  "last_updated": "2026-07-25T19:03:12.940498",
   "total_count": 30,
   "items": [
+    {
+      "company_name": "덕산넵코어스",
+      "subscription_start": "2026-09-16",
+      "subscription_end": "2026-09-17",
+      "listing_date": null,
+      "offer_price_range": "12,400~14,600원",
+      "final_offer_price": null,
+      "offer_price_min": 12400,
+      "offer_price_max": 14600,
+      "lead_underwriter": "대신증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2309&l=&page=1"
+    },
+    {
+      "company_name": "네오사피엔스",
+      "subscription_start": "2026-09-08",
+      "subscription_end": "2026-09-09",
+      "listing_date": null,
+      "offer_price_range": "13,800~15,800원",
+      "final_offer_price": null,
+      "offer_price_min": 13800,
+      "offer_price_max": 15800,
+      "lead_underwriter": "대신증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2308&l=&page=1"
+    },
     {
       "company_name": "브릴스",
       "subscription_start": "2026-08-25",
@@ -15,6 +43,20 @@
       "institutional_competition": null,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2307&l=&page=1"
+    },
+    {
+      "company_name": "빅웨이브로보틱스",
+      "subscription_start": "2026-08-13",
+      "subscription_end": "2026-08-14",
+      "listing_date": null,
+      "offer_price_range": "20,000~24,000원",
+      "final_offer_price": null,
+      "offer_price_min": 20000,
+      "offer_price_max": 24000,
+      "lead_underwriter": "유진투자증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2294&l=&page=1"
     },
     {
       "company_name": "스카이랩스",
@@ -34,7 +76,7 @@
       "company_name": "니어스랩",
       "subscription_start": "2026-08-12",
       "subscription_end": "2026-08-13",
-      "listing_date": null,
+      "listing_date": "2026-01-01",
       "offer_price_range": "30,000~41,200원",
       "final_offer_price": null,
       "offer_price_min": 30000,
@@ -73,24 +115,10 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2305&l=&page=1"
     },
     {
-      "company_name": "빅웨이브로보틱스",
-      "subscription_start": "2026-08-05",
-      "subscription_end": "2026-08-06",
-      "listing_date": null,
-      "offer_price_range": "20,000~24,000원",
-      "final_offer_price": null,
-      "offer_price_min": 20000,
-      "offer_price_max": 24000,
-      "lead_underwriter": "유진투자증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2294&l=&page=1"
-    },
-    {
       "company_name": "케이앤에스아이앤씨",
       "subscription_start": "2026-08-04",
       "subscription_end": "2026-08-05",
-      "listing_date": "2026-08-13",
+      "listing_date": "2026-08-14",
       "offer_price_range": "9,000~9,000원",
       "final_offer_price": null,
       "offer_price_min": 9000,
@@ -393,34 +421,6 @@
       "institutional_competition": 2097.68,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2270&l=&page=1"
-    },
-    {
-      "company_name": "신한스팩17호",
-      "subscription_start": "2026-03-19",
-      "subscription_end": "2026-03-20",
-      "listing_date": "2026-04-01",
-      "offer_price_range": "2,000원",
-      "final_offer_price": 2000,
-      "offer_price_min": 2000,
-      "offer_price_max": 2000,
-      "lead_underwriter": "신한투자증권",
-      "institutional_competition": 1403.74,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2280&l=&page=1"
-    },
-    {
-      "company_name": "NH스팩33호",
-      "subscription_start": "2026-03-17",
-      "subscription_end": "2026-03-18",
-      "listing_date": "2026-03-27",
-      "offer_price_range": "2,000원",
-      "final_offer_price": 2000,
-      "offer_price_min": 2000,
-      "offer_price_max": 2000,
-      "lead_underwriter": "NH투자증권",
-      "institutional_competition": 569.27,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2277&l=&page=1"
     }
   ]
 }
