@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-03T20:34:53.072037",
+  "last_updated": "2026-10-10T21:08:15.114181",
   "total_count": 30,
   "items": [
     {
@@ -43,6 +43,20 @@
       "institutional_competition": null,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2338&l=&page=1"
+    },
+    {
+      "company_name": "제논",
+      "subscription_start": "2026-11-04",
+      "subscription_end": "2026-11-05",
+      "listing_date": null,
+      "offer_price_range": "9,700~12,200원",
+      "final_offer_price": null,
+      "offer_price_min": 9700,
+      "offer_price_max": 12200,
+      "lead_underwriter": "삼성증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2341&l=&page=1"
     },
     {
       "company_name": "넥스아이",
@@ -227,20 +241,6 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2330&l=&page=1"
     },
     {
-      "company_name": "다비오",
-      "subscription_start": "2026-10-19",
-      "subscription_end": "2026-10-20",
-      "listing_date": null,
-      "offer_price_range": "12,300~16,600원",
-      "final_offer_price": null,
-      "offer_price_min": 12300,
-      "offer_price_max": 16600,
-      "lead_underwriter": "대신증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2327&l=&page=1"
-    },
-    {
       "company_name": "SK증권스팩14호",
       "subscription_start": "2026-10-15",
       "subscription_end": "2026-10-16",
@@ -272,9 +272,9 @@
       "company_name": "엠에스바이오",
       "subscription_start": "2026-10-12",
       "subscription_end": "2026-10-13",
-      "listing_date": null,
-      "offer_price_range": "6,800~7,800원",
-      "final_offer_price": null,
+      "listing_date": "2026-10-22",
+      "offer_price_range": "7,800원",
+      "final_offer_price": 7800,
       "offer_price_min": 6800,
       "offer_price_max": 7800,
       "lead_underwriter": "KB증권",
@@ -286,9 +286,9 @@
       "company_name": "엘리스그룹",
       "subscription_start": "2026-10-07",
       "subscription_end": "2026-10-08",
-      "listing_date": null,
-      "offer_price_range": "70,400~90,500원",
-      "final_offer_price": null,
+      "listing_date": "2026-10-20",
+      "offer_price_range": "90,500원",
+      "final_offer_price": 90500,
       "offer_price_min": 70400,
       "offer_price_max": 90500,
       "lead_underwriter": "미래에셋증권",
@@ -306,7 +306,7 @@
       "offer_price_min": 19500,
       "offer_price_max": 23500,
       "lead_underwriter": "하나증권",
-      "institutional_competition": null,
+      "institutional_competition": 685.0,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2320&l=&page=1"
     },
