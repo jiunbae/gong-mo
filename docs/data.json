@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31T20:58:00.135839",
+  "last_updated": "2026-11-07T21:25:54.291641",
   "total_count": 30,
   "items": [
     {
@@ -99,6 +99,20 @@
       "institutional_competition": null,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2343&l=&page=1"
+    },
+    {
+      "company_name": "다비오",
+      "subscription_start": "2026-12-01",
+      "subscription_end": "2026-12-02",
+      "listing_date": null,
+      "offer_price_range": "12,300~16,600원",
+      "final_offer_price": null,
+      "offer_price_min": 12300,
+      "offer_price_max": 16600,
+      "lead_underwriter": "대신증권",
+      "institutional_competition": null,
+      "source": "38커뮤니케이션",
+      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2358&l=&page=1"
     },
     {
       "company_name": "에이엔에이치스트럭쳐",
@@ -255,26 +269,12 @@
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2334&l=&page=1"
     },
     {
-      "company_name": "다비오",
-      "subscription_start": "2026-11-10",
-      "subscription_end": "2026-11-11",
-      "listing_date": null,
-      "offer_price_range": "12,300~16,600원",
-      "final_offer_price": null,
-      "offer_price_min": 12300,
-      "offer_price_max": 16600,
-      "lead_underwriter": "대신증권",
-      "institutional_competition": null,
-      "source": "38커뮤니케이션",
-      "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2344&l=&page=1"
-    },
-    {
       "company_name": "에이엘로봇",
       "subscription_start": "2026-11-06",
       "subscription_end": "2026-11-09",
       "listing_date": "2026-01-01",
-      "offer_price_range": "15,700~17,600원",
-      "final_offer_price": null,
+      "offer_price_range": "17,600원",
+      "final_offer_price": 17600,
       "offer_price_min": 15700,
       "offer_price_max": 17600,
       "lead_underwriter": "대신증권",
@@ -292,7 +292,7 @@
       "offer_price_min": 10000,
       "offer_price_max": 12000,
       "lead_underwriter": "한국투자증권",
-      "institutional_competition": null,
+      "institutional_competition": 1343.32,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2338&l=&page=1"
     },
@@ -300,13 +300,13 @@
       "company_name": "영광와이케이엠씨",
       "subscription_start": "2026-11-04",
       "subscription_end": "2026-11-05",
-      "listing_date": "2026-01-01",
-      "offer_price_range": "9,400~11,000원",
-      "final_offer_price": null,
+      "listing_date": "2026-11-16",
+      "offer_price_range": "11,000원",
+      "final_offer_price": 11000,
       "offer_price_min": 9400,
       "offer_price_max": 11000,
       "lead_underwriter": "대신증권",
-      "institutional_competition": null,
+      "institutional_competition": 1342.66,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2342&l=&page=1"
     },
@@ -320,7 +320,7 @@
       "offer_price_min": 10500,
       "offer_price_max": 13000,
       "lead_underwriter": "한국투자증권",
-      "institutional_competition": null,
+      "institutional_competition": 13.26,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2336&l=&page=1"
     },
@@ -334,7 +334,7 @@
       "offer_price_min": 16400,
       "offer_price_max": 20200,
       "lead_underwriter": "미래에셋증권",
-      "institutional_competition": null,
+      "institutional_competition": 19.27,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2325&l=&page=1"
     },
@@ -348,7 +348,7 @@
       "offer_price_min": 23000,
       "offer_price_max": 26500,
       "lead_underwriter": "삼성증권",
-      "institutional_competition": null,
+      "institutional_competition": 1219.37,
       "source": "38커뮤니케이션",
       "detail_url": "http://www.38.co.kr/html/fund/?o=v&no=2339&l=&page=1"
     },
